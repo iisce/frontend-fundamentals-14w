@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1"
+		/>
+		<title>Project Scaffold</title>
+		<link
+			rel="stylesheet"
+			href="styles.css"
+		/>
+	</head>
+	<body>
+		<header>
+			<h1>Project Scaffold</h1>
+			<nav>
+				<a href="#about">About</a>
+				<a href="#links">Links</a>
+			</nav>
+		</header>
+
+		<main>
+			<section id="about">
+				<h2>About</h2>
+				<p>Replace this content with your project.</p>
+			</section>
+
+			<section id="links">
+				<h2>Links</h2>
+				<ul>
+					<li>
+						<a href="https://developer.mozilla.org/"
+							>MDN Web Docs</a
+						>
+					</li>
+				</ul>
+			</section>
+		</main>
+
+		<footer>
+			<small>&copy; <span id="year"></span></small>
+		</footer>
+
+		<script>
+			document.getElementById('year').textContent =
+				new Date().getFullYear();
+		</script>
+	</body>
+</html>
