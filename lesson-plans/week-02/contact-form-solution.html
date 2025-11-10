@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Contact Form - Solution</title>
+		<style>
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				max-width: 600px;
+				margin: 40px auto;
+				padding: 0 20px;
+				background-color: #f5f5f5;
+				line-height: 1.6;
+			}
+
+			h1 {
+				color: #2c3e50;
+				text-align: center;
+			}
+
+			.container {
+				background-color: white;
+				padding: 30px;
+				border-radius: 8px;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			}
+
+			form {
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+			}
+
+			fieldset {
+				border: 2px solid #e0e0e0;
+				border-radius: 6px;
+				padding: 20px;
+				margin: 0;
+			}
+
+			legend {
+				font-weight: bold;
+				font-size: 1.1em;
+				color: #34495e;
+				padding: 0 10px;
+			}
+
+			div {
+				display: flex;
+				flex-direction: column;
+				margin-bottom: 15px;
+			}
+
+			label {
+				font-weight: 600;
+				margin-bottom: 5px;
+				color: #555;
+			}
+
+			input,
+			textarea {
+				padding: 10px;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				font-size: 1em;
+				font-family: inherit;
+				transition: border-color 0.3s;
+			}
+
+			input:focus,
+			textarea:focus {
+				outline: none;
+				border-color: #3498db;
+				box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+			}
+
+			textarea {
+				resize: vertical;
+				min-height: 100px;
+			}
+
+			button[type='submit'] {
+				background-color: #3498db;
+				color: white;
+				padding: 12px 24px;
+				border: none;
+				border-radius: 4px;
+				font-size: 1em;
+				font-weight: 600;
+				cursor: pointer;
+				transition: background-color 0.3s;
+			}
+
+			button[type='submit']:hover {
+				background-color: #2980b9;
+			}
+
+			button[type='submit']:active {
+				transform: translateY(1px);
+			}
+
+			.info-box {
+				background-color: #e8f4f8;
+				border-left: 4px solid #3498db;
+				padding: 15px;
+				margin-top: 30px;
+				border-radius: 4px;
+			}
+
+			.info-box h3 {
+				margin-top: 0;
+				color: #2980b9;
+			}
+
+			.info-box ul {
+				margin-bottom: 0;
+			}
+
+			.info-box code {
+				background-color: #fff;
+				padding: 2px 6px;
+				border-radius: 3px;
+				font-family: 'Courier New', monospace;
+				color: #e74c3c;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Contact Us</h1>
+
+			<form>
+				<fieldset>
+					<legend>Your Information</legend>
+
+					<div>
+						<label for="name">Full Name</label>
+						<input
+							id="name"
+							name="name"
+							type="text"
+							placeholder="e.g., Jane Smith"
+						/>
+					</div>
+
+					<div>
+						<label for="email">Email Address</label>
+						<input
+							id="email"
+							name="email"
+							type="email"
+							placeholder="e.g., jane@example.com"
+						/>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend>Your Message</legend>
+
+					<div>
+						<label for="subject">Subject</label>
+						<input
+							id="subject"
+							name="subject"
+							type="text"
+							placeholder="e.g., Question about services"
+						/>
+					</div>
+
+					<div>
+						<label for="message">Message</label>
+						<textarea
+							id="message"
+							name="message"
+							rows="5"
+							placeholder="Tell us what's on your mind..."
+						></textarea>
+					</div>
+				</fieldset>
+
+				<button type="submit">Send Message</button>
+			</form>
+
+			<div class="info-box">
+				<h3>✅ What Makes This Form Accessible?</h3>
+				<ul>
+					<li>
+						Every input has a visible <code>&lt;label&gt;</code>
+					</li>
+					<li>
+						Labels are connected using <code>for</code> and
+						<code>id</code>
+					</li>
+					<li>
+						All inputs have <code>name</code> attributes for form
+						submission
+					</li>
+					<li>
+						Related fields are grouped with
+						<code>&lt;fieldset&gt;</code>
+					</li>
+					<li>
+						Each fieldset has a descriptive
+						<code>&lt;legend&gt;</code>
+					</li>
+					<li>
+						Placeholders provide examples (but aren't replacements
+						for labels)
+					</li>
+					<li>
+						Proper input types (<code>type="email"</code>) for
+						better UX
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

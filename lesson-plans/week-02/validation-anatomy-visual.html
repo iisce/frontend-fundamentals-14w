@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Form Validation Anatomy: Visual Guide</title>
+		<style>
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				max-width: 1200px;
+				margin: 40px auto;
+				padding: 0 20px;
+				line-height: 1.6;
+			}
+
+			h1 {
+				color: #2c3e50;
+				text-align: center;
+				margin-bottom: 10px;
+			}
+
+			.subtitle {
+				text-align: center;
+				color: #7f8c8d;
+				margin-bottom: 40px;
+			}
+
+			.example-section {
+				margin: 40px 0;
+				padding: 20px;
+				background: #f8f9fa;
+				border-radius: 8px;
+			}
+
+			.example-section h2 {
+				color: #34495e;
+				margin-top: 0;
+			}
+
+			form {
+				background: white;
+				padding: 30px;
+				border-radius: 8px;
+				max-width: 700px;
+				margin: 20px auto;
+			}
+
+			.form-field {
+				margin-bottom: 30px;
+				padding: 20px;
+				background: #fff3cd;
+				border: 3px solid #ffc107;
+				border-radius: 6px;
+				position: relative;
+			}
+
+			label {
+				display: block;
+				font-weight: 600;
+				margin-bottom: 8px;
+				color: #2c3e50;
+				padding: 5px;
+				background: #d1ecf1;
+				border-radius: 3px;
+				border: 2px solid #17a2b8;
+				position: relative;
+			}
+
+			label::before {
+				content: 'for="'attr(for) '"';
+				position: absolute;
+				right: 100%;
+				top: 50%;
+				transform: translateY(-50%);
+				margin-right: 10px;
+				font-size: 0.75em;
+				background: #17a2b8;
+				color: white;
+				padding: 3px 8px;
+				border-radius: 3px;
+				white-space: nowrap;
+			}
+
+			.required-marker {
+				color: #dc3545;
+				font-weight: bold;
+				background: #f8d7da;
+				padding: 2px 6px;
+				border-radius: 3px;
+			}
+
+			input,
+			textarea {
+				width: 100%;
+				padding: 10px;
+				border: 3px solid #6c757d;
+				border-radius: 4px;
+				font-size: 1em;
+				font-family: inherit;
+				box-sizing: border-box;
+				position: relative;
+				background: #e7f3ff;
+			}
+
+			.validation-attrs {
+				position: absolute;
+				right: -280px;
+				top: 50%;
+				transform: translateY(-50%);
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+			}
+
+			.attr-tag {
+				background: #28a745;
+				color: white;
+				padding: 4px 8px;
+				border-radius: 3px;
+				font-size: 0.7em;
+				white-space: nowrap;
+				font-family: monospace;
+			}
+
+			.attr-tag.required {
+				background: #dc3545;
+			}
+			.attr-tag.type {
+				background: #007bff;
+			}
+			.attr-tag.pattern {
+				background: #6f42c1;
+			}
+			.attr-tag.aria {
+				background: #fd7e14;
+			}
+
+			.help-text {
+				font-size: 0.85em;
+				color: #6c757d;
+				margin-top: 8px;
+				padding: 10px;
+				background: #d4edda;
+				border-left: 4px solid #28a745;
+				border-radius: 3px;
+				position: relative;
+			}
+
+			.help-text::before {
+				content: 'id="'attr(id) '"';
+				position: absolute;
+				left: -120px;
+				top: 50%;
+				transform: translateY(-50%);
+				font-size: 0.75em;
+				background: #28a745;
+				color: white;
+				padding: 3px 8px;
+				border-radius: 3px;
+				white-space: nowrap;
+			}
+
+			.aria-connection {
+				position: absolute;
+				left: -140px;
+				top: 40%;
+				transform: translateY(-50%);
+				font-size: 0.7em;
+				background: #fd7e14;
+				color: white;
+				padding: 4px 8px;
+				border-radius: 3px;
+				white-space: nowrap;
+			}
+
+			.legend-box {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 15px;
+				margin: 30px 0;
+			}
+
+			.legend-item {
+				padding: 15px;
+				border-radius: 4px;
+				border: 2px solid;
+				font-size: 0.9em;
+			}
+
+			.legend-required {
+				background: #f8d7da;
+				border-color: #dc3545;
+				color: #721c24;
+			}
+
+			.legend-type {
+				background: #cfe2ff;
+				border-color: #007bff;
+				color: #084298;
+			}
+
+			.legend-pattern {
+				background: #e2d9f3;
+				border-color: #6f42c1;
+				color: #3d2465;
+			}
+
+			.legend-aria {
+				background: #ffe5d0;
+				border-color: #fd7e14;
+				color: #984c0c;
+			}
+
+			.legend-help {
+				background: #d4edda;
+				border-color: #28a745;
+				color: #155724;
+			}
+
+			.code-display {
+				background: #2d2d2d;
+				color: #f8f8f2;
+				padding: 20px;
+				border-radius: 4px;
+				overflow-x: auto;
+				margin: 20px 0;
+				font-size: 0.9em;
+			}
+
+			.code-display code {
+				font-family: 'Courier New', monospace;
+				line-height: 1.8;
+			}
+
+			.highlight-tag {
+				color: #ff79c6;
+			}
+			.highlight-attr {
+				color: #50fa7b;
+			}
+			.highlight-value {
+				color: #f1fa8c;
+			}
+			.highlight-required {
+				color: #ff5555;
+			}
+			.highlight-aria {
+				color: #ffb86c;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>🔒 Form Validation Anatomy: Visual Guide</h1>
+		<p class="subtitle">
+			A color-coded breakdown of HTML5 validation and ARIA attributes
+		</p>
+
+		<div class="legend-box">
+			<div class="legend-item legend-required">
+				<strong>required</strong><br />
+				Field must be filled out
+			</div>
+			<div class="legend-item legend-type">
+				<strong>type="email"</strong><br />
+				Built-in format validation
+			</div>
+			<div class="legend-item legend-pattern">
+				<strong>pattern</strong><br />
+				Custom regex validation
+			</div>
+			<div class="legend-item legend-aria">
+				<strong>aria-describedby</strong><br />
+				Connects help text to input
+			</div>
+			<div class="legend-item legend-help">
+				<strong>Help Text</strong><br />
+				Provides guidance to users
+			</div>
+		</div>
+
+		<div class="example-section">
+			<h2>Visual Example: Validated Input Field</h2>
+
+			<form>
+				<!-- Email Field with All Attributes -->
+				<div
+					class="form-field"
+					style="position: relative"
+				>
+					<label for="email">
+						Email Address <span class="required-marker">*</span>
+					</label>
+					<div style="position: relative">
+						<span class="aria-connection"
+							>aria-describedby="email-help"</span
+						>
+						<input
+							id="email"
+							name="email"
+							type="email"
+							required
+							placeholder="you@example.com"
+						/>
+						<div class="validation-attrs">
+							<span class="attr-tag required">required</span>
+							<span class="attr-tag type">type="email"</span>
+							<span class="attr-tag">id="email"</span>
+							<span class="attr-tag">name="email"</span>
+							<span class="attr-tag aria">aria-describedby</span>
+						</div>
+					</div>
+					<small
+						id="email-help"
+						class="help-text"
+					>
+						We'll never share your email with anyone
+					</small>
+				</div>
+
+				<!-- Phone Field with Pattern -->
+				<div
+					class="form-field"
+					style="position: relative"
+				>
+					<label for="phone">Phone Number</label>
+					<div style="position: relative">
+						<span class="aria-connection"
+							>aria-describedby="phone-help"</span
+						>
+						<input
+							id="phone"
+							name="phone"
+							type="tel"
+							pattern="[\(]?[0-9]{3}[\)]?[\s\-]?[0-9]{3}[\s\-]?[0-9]{4}"
+							title="Format: (123) 456-7890"
+						/>
+						<div class="validation-attrs">
+							<span class="attr-tag type">type="tel"</span>
+							<span class="attr-tag pattern">pattern="..."</span>
+							<span class="attr-tag pattern">title="..."</span>
+							<span class="attr-tag aria">aria-describedby</span>
+						</div>
+					</div>
+					<small
+						id="phone-help"
+						class="help-text"
+					>
+						Format: (123) 456-7890 or 123-456-7890
+					</small>
+				</div>
+
+				<!-- Name Field with Min/Max Length -->
+				<div
+					class="form-field"
+					style="position: relative"
+				>
+					<label for="name">
+						Full Name <span class="required-marker">*</span>
+					</label>
+					<div style="position: relative">
+						<span class="aria-connection"
+							>aria-describedby="name-help"</span
+						>
+						<input
+							id="name"
+							name="name"
+							type="text"
+							required
+							minlength="2"
+							maxlength="50"
+						/>
+						<div class="validation-attrs">
+							<span class="attr-tag required">required</span>
+							<span class="attr-tag">minlength="2"</span>
+							<span class="attr-tag">maxlength="50"</span>
+							<span class="attr-tag aria">aria-describedby</span>
+						</div>
+					</div>
+					<small
+						id="name-help"
+						class="help-text"
+					>
+						2-50 characters, first and last name
+					</small>
+				</div>
+			</form>
+		</div>
+
+		<div class="example-section">
+			<h2>The Code Behind It</h2>
+
+			<div class="code-display">
+				<code>
+					<span class="highlight-tag"
+						>&lt;div class="form-field"&gt;</span
+					><br />
+					&nbsp;&nbsp;<span class="highlight-tag"
+						>&lt;label <span class="highlight-attr">for</span>=<span
+							class="highlight-value"
+							>"email"</span
+						>&gt;</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;Email Address
+					<span class="highlight-required"
+						>&lt;span class="required"&gt;*&lt;/span&gt;</span
+					><br />
+					&nbsp;&nbsp;<span class="highlight-tag">&lt;/label&gt;</span
+					><br />
+					<br />
+					&nbsp;&nbsp;<span class="highlight-tag">&lt;input</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight-attr"
+						>id</span
+					>=<span class="highlight-value">"email"</span><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight-attr"
+						>name</span
+					>=<span class="highlight-value">"email"</span><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight-attr"
+						>type</span
+					>=<span class="highlight-value">"email"</span><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight-required"
+						>required</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight-aria"
+						>aria-describedby</span
+					>=<span class="highlight-value">"email-help"</span><br />
+					&nbsp;&nbsp;<span class="highlight-tag">/&gt;</span><br />
+					<br />
+					&nbsp;&nbsp;<span class="highlight-tag"
+						>&lt;small <span class="highlight-attr">id</span>=<span
+							class="highlight-value"
+							>"email-help"</span
+						>&gt;</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;We'll never share your email with
+					anyone<br />
+					&nbsp;&nbsp;<span class="highlight-tag">&lt;/small&gt;</span
+					><br />
+					<span class="highlight-tag">&lt;/div&gt;</span>
+				</code>
+			</div>
+		</div>
+
+		<div class="example-section">
+			<h2>Understanding Validation Attributes</h2>
+
+			<h3 style="color: #dc3545">🔴 required</h3>
+			<p>
+				The field <strong>must</strong> be filled in before the form can
+				be submitted. Browsers will show a default error message if left
+				empty.
+			</p>
+
+			<div
+				style="
+					background: white;
+					padding: 15px;
+					border-radius: 8px;
+					margin: 15px 0;
+				"
+			>
+				<code style="color: #dc3545; font-size: 1.1em"
+					>&lt;input required /&gt;</code
+				>
+			</div>
+
+			<h3 style="color: #007bff">🔵 type="email"</h3>
+			<p>
+				Provides built-in email validation. The browser checks for
+				<code>@</code> symbol and valid format. Also provides
+				email-specific keyboard on mobile.
+			</p>
+
+			<div
+				style="
+					background: white;
+					padding: 15px;
+					border-radius: 8px;
+					margin: 15px 0;
+				"
+			>
+				<code style="color: #007bff; font-size: 1.1em"
+					>&lt;input type="email" /&gt;</code
+				>
+			</div>
+
+			<h3 style="color: #6f42c1">🟣 pattern</h3>
+			<p>
+				Custom regex validation. The input must match the pattern to be
+				valid. <strong>Always</strong> include a <code>title</code> to
+				explain the format.
+			</p>
+
+			<div
+				style="
+					background: white;
+					padding: 15px;
+					border-radius: 8px;
+					margin: 15px 0;
+				"
+			>
+				<code style="color: #6f42c1; font-size: 1.1em">
+					&lt;input pattern="[0-9]{3}-[0-9]{4}" title="Format:
+					123-4567" /&gt;
+				</code>
+			</div>
+
+			<h3 style="color: #fd7e14">🟠 aria-describedby</h3>
+			<p>
+				Links help text to the input. Screen readers announce the help
+				text when the field is focused, providing essential context.
+			</p>
+
+			<div
+				style="
+					background: white;
+					padding: 15px;
+					border-radius: 8px;
+					margin: 15px 0;
+				"
+			>
+				<pre
+					style="margin: 0; line-height: 1.8"
+				><code><span style="color: #fd7e14;">&lt;input aria-describedby="email-help" /&gt;</span>
+<span style="color: #28a745;">&lt;small id="email-help"&gt;Helper text here&lt;/small&gt;</span></code></pre>
+			</div>
+		</div>
+
+		<div class="example-section">
+			<h2>The ARIA Connection</h2>
+
+			<div
+				style="
+					background: white;
+					padding: 20px;
+					border-radius: 8px;
+					margin: 20px 0;
+				"
+			>
+				<pre style="margin: 0; font-size: 1.05em; line-height: 2">
+<span style="color: #fd7e14; font-weight: bold;">aria-describedby="email-help"</span>
+           ↓ CONNECTS TO ↓
+<span style="color: #28a745; font-weight: bold;">id="email-help"</span>
+      </pre>
+			</div>
+
+			<p><strong>What this enables:</strong></p>
+			<ul style="line-height: 2">
+				<li>
+					✅ Screen readers announce help text when field is focused
+				</li>
+				<li>✅ Users understand what format is expected</li>
+				<li>✅ Error messages can be dynamically announced</li>
+				<li>✅ Better context for all users, not just visual</li>
+			</ul>
+		</div>
+
+		<div class="example-section">
+			<h2>Common Validation Combinations</h2>
+
+			<h3>📧 Email Field (Required)</h3>
+			<pre
+				style="
+					background: #2d2d2d;
+					color: #f8f8f2;
+					padding: 15px;
+					border-radius: 6px;
+					overflow-x: auto;
+				"
+			><code>&lt;input type="email" required aria-describedby="email-help" /&gt;</code></pre>
+
+			<h3>📞 Phone Field (Optional, Pattern)</h3>
+			<pre
+				style="
+					background: #2d2d2d;
+					color: #f8f8f2;
+					padding: 15px;
+					border-radius: 6px;
+					overflow-x: auto;
+				"
+			><code>&lt;input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+       title="Format: 123-456-7890" aria-describedby="phone-help" /&gt;</code></pre>
+
+			<h3>👤 Name Field (Required, Length)</h3>
+			<pre
+				style="
+					background: #2d2d2d;
+					color: #f8f8f2;
+					padding: 15px;
+					border-radius: 6px;
+					overflow-x: auto;
+				"
+			><code>&lt;input type="text" required minlength="2" maxlength="50"
+       aria-describedby="name-help" /&gt;</code></pre>
+
+			<h3>🔢 Age Field (Number, Range)</h3>
+			<pre
+				style="
+					background: #2d2d2d;
+					color: #f8f8f2;
+					padding: 15px;
+					border-radius: 6px;
+					overflow-x: auto;
+				"
+			><code>&lt;input type="number" min="18" max="120" required
+       aria-describedby="age-help" /&gt;</code></pre>
+		</div>
+
+		<div class="example-section">
+			<h2>🎯 Practice Challenge</h2>
+			<p>Create a registration form with these validated fields:</p>
+			<ol style="line-height: 2">
+				<li>
+					<strong>Username:</strong> Required, 3-16 characters,
+					letters/numbers only (pattern)
+				</li>
+				<li><strong>Email:</strong> Required, email type</li>
+				<li>
+					<strong>Password:</strong> Required, minimum 8 characters
+				</li>
+				<li><strong>Age:</strong> Required, number, 18-120</li>
+				<li><strong>Website:</strong> Optional, URL type</li>
+			</ol>
+			<p><strong>Requirements:</strong></p>
+			<ul style="line-height: 2">
+				<li>All fields have proper labels with for/id connection</li>
+				<li>
+					All fields have help text connected via aria-describedby
+				</li>
+				<li>Pattern includes helpful title attribute</li>
+				<li>Required fields marked visually</li>
+			</ul>
+		</div>
+
+		<div class="example-section">
+			<h2>Key Takeaways</h2>
+			<ul style="line-height: 2">
+				<li><code>required</code> makes a field mandatory</li>
+				<li>
+					<code>type="email"</code>, <code>type="url"</code>, etc.
+					provide built-in validation
+				</li>
+				<li>
+					<code>pattern</code> allows custom regex validation (always
+					include <code>title</code>)
+				</li>
+				<li>
+					<code>minlength</code>, <code>maxlength</code>,
+					<code>min</code>, <code>max</code> set constraints
+				</li>
+				<li>
+					<code>aria-describedby</code> connects help text for screen
+					readers
+				</li>
+				<li>
+					Always provide visible help text, not just validation errors
+				</li>
+				<li>Test with keyboard navigation and screen readers</li>
+			</ul>
+		</div>
+	</body>
+</html>

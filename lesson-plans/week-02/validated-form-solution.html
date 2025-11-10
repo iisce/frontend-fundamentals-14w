@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Complete Validated Form - Solution</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				min-height: 100vh;
+				padding: 40px 20px;
+			}
+
+			.container {
+				max-width: 700px;
+				margin: 0 auto;
+				background: white;
+				padding: 40px;
+				border-radius: 12px;
+				box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+			}
+
+			h1 {
+				color: #2c3e50;
+				margin-bottom: 10px;
+				text-align: center;
+			}
+
+			.subtitle {
+				text-align: center;
+				color: #7f8c8d;
+				margin-bottom: 30px;
+				font-size: 0.95em;
+			}
+
+			.info-box {
+				background: #e8f4f8;
+				border-left: 4px solid #3498db;
+				padding: 20px;
+				margin-bottom: 30px;
+				border-radius: 4px;
+			}
+
+			.info-box h3 {
+				color: #2980b9;
+				margin-bottom: 10px;
+				font-size: 1em;
+			}
+
+			.info-box ul {
+				margin-left: 20px;
+				color: #2c3e50;
+				line-height: 1.8;
+			}
+
+			form {
+				display: flex;
+				flex-direction: column;
+				gap: 25px;
+			}
+
+			fieldset {
+				border: 2px solid #e0e0e0;
+				border-radius: 8px;
+				padding: 20px;
+				background: #f8f9fa;
+			}
+
+			legend {
+				font-weight: 600;
+				color: #2c3e50;
+				padding: 0 10px;
+				font-size: 1.1em;
+			}
+
+			.form-field {
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+				margin-bottom: 15px;
+			}
+
+			.form-field:last-child {
+				margin-bottom: 0;
+			}
+
+			label {
+				font-weight: 600;
+				color: #34495e;
+				font-size: 0.95em;
+			}
+
+			label .required {
+				color: #dc3545;
+				font-weight: bold;
+			}
+
+			input,
+			textarea {
+				padding: 12px;
+				border: 2px solid #ddd;
+				border-radius: 6px;
+				font-size: 1em;
+				font-family: inherit;
+				transition: border-color 0.3s, box-shadow 0.3s;
+			}
+
+			input:focus,
+			textarea:focus {
+				outline: none;
+				border-color: #667eea;
+				box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+			}
+
+			/* Validation styling */
+			input:valid,
+			textarea:valid {
+				border-color: #28a745;
+			}
+
+			input:invalid:not(:placeholder-shown),
+			textarea:invalid:not(:placeholder-shown) {
+				border-color: #dc3545;
+				background: #fff5f5;
+			}
+
+			input:required,
+			textarea:required {
+				border-left: 4px solid #ffc107;
+			}
+
+			.help-text {
+				font-size: 0.85em;
+				color: #6c757d;
+				line-height: 1.4;
+			}
+
+			.help-text::before {
+				content: 'ℹ️ ';
+			}
+
+			button[type='submit'] {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				padding: 14px 28px;
+				border: none;
+				border-radius: 6px;
+				font-size: 1.05em;
+				font-weight: 600;
+				cursor: pointer;
+				transition: transform 0.2s, box-shadow 0.2s;
+				margin-top: 10px;
+			}
+
+			button[type='submit']:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+			}
+
+			button[type='submit']:active {
+				transform: translateY(0);
+			}
+
+			.required-note {
+				font-size: 0.9em;
+				color: #6c757d;
+				font-style: italic;
+				text-align: center;
+				margin-top: 10px;
+			}
+
+			.success-message {
+				background: #d4edda;
+				border: 2px solid #28a745;
+				color: #155724;
+				padding: 15px;
+				border-radius: 6px;
+				text-align: center;
+				display: none;
+				margin-top: 20px;
+			}
+
+			.success-message.show {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>✅ Complete Validated Form</h1>
+			<p class="subtitle">
+				A fully accessible form with HTML5 validation and ARIA
+				attributes
+			</p>
+
+			<div class="info-box">
+				<h3>🎯 This form demonstrates:</h3>
+				<ul>
+					<li>
+						<strong>required</strong> - Name, email, and message are
+						mandatory
+					</li>
+					<li>
+						<strong>minlength/maxlength</strong> - Name must be 2-50
+						characters
+					</li>
+					<li>
+						<strong>type="email"</strong> - Built-in email
+						validation
+					</li>
+					<li>
+						<strong>pattern</strong> - Phone number must match
+						specific format
+					</li>
+					<li>
+						<strong>aria-describedby</strong> - Help text connected
+						to inputs
+					</li>
+					<li>
+						<strong>Visual feedback</strong> - Green for valid, red
+						for invalid
+					</li>
+				</ul>
+			</div>
+
+			<form
+				id="contact-form"
+				novalidate
+			>
+				<fieldset>
+					<legend>Contact Information</legend>
+
+					<div class="form-field">
+						<label for="name">
+							Full Name <span class="required">*</span>
+						</label>
+						<input
+							id="name"
+							name="name"
+							type="text"
+							required
+							minlength="2"
+							maxlength="50"
+							placeholder="John Doe"
+							aria-describedby="name-help"
+						/>
+						<small
+							id="name-help"
+							class="help-text"
+						>
+							Please enter your first and last name (2-50
+							characters)
+						</small>
+					</div>
+
+					<div class="form-field">
+						<label for="email">
+							Email Address <span class="required">*</span>
+						</label>
+						<input
+							id="email"
+							name="email"
+							type="email"
+							required
+							placeholder="you@example.com"
+							aria-describedby="email-help"
+						/>
+						<small
+							id="email-help"
+							class="help-text"
+						>
+							We'll never share your email with anyone
+						</small>
+					</div>
+
+					<div class="form-field">
+						<label for="phone">Phone Number (Optional)</label>
+						<input
+							id="phone"
+							name="phone"
+							type="tel"
+							pattern="[\(]?[0-9]{3}[\)]?[\s\-]?[0-9]{3}[\s\-]?[0-9]{4}"
+							title="Use format: (123) 456-7890 or 123-456-7890"
+							placeholder="(123) 456-7890"
+							aria-describedby="phone-help"
+						/>
+						<small
+							id="phone-help"
+							class="help-text"
+						>
+							Format: (123) 456-7890 or 123-456-7890
+						</small>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend>Your Message</legend>
+
+					<div class="form-field">
+						<label for="subject">Subject</label>
+						<input
+							id="subject"
+							name="subject"
+							type="text"
+							maxlength="100"
+							placeholder="Question about..."
+							aria-describedby="subject-help"
+						/>
+						<small
+							id="subject-help"
+							class="help-text"
+						>
+							Brief topic of your message (optional, max 100
+							characters)
+						</small>
+					</div>
+
+					<div class="form-field">
+						<label for="message">
+							Message <span class="required">*</span>
+						</label>
+						<textarea
+							id="message"
+							name="message"
+							rows="5"
+							required
+							minlength="10"
+							maxlength="1000"
+							placeholder="Type your message here..."
+							aria-describedby="message-help"
+						></textarea>
+						<small
+							id="message-help"
+							class="help-text"
+						>
+							Please provide at least 10 characters (max 1000)
+						</small>
+					</div>
+				</fieldset>
+
+				<button type="submit">Send Message</button>
+				<p class="required-note">* Required fields</p>
+			</form>
+
+			<div
+				id="success"
+				class="success-message"
+				role="alert"
+				aria-live="polite"
+			>
+				✅ Thank you! Your message has been sent successfully.
+			</div>
+		</div>
+
+		<script>
+			const form = document.getElementById('contact-form');
+			const successMessage = document.getElementById('success');
+
+			// Custom validation messages
+			const inputs = form.querySelectorAll('input, textarea');
+
+			inputs.forEach((input) => {
+				input.addEventListener('invalid', (e) => {
+					e.preventDefault();
+
+					if (input.validity.valueMissing) {
+						input.setCustomValidity(
+							`Please fill in the ${input.labels[0].textContent.replace(
+								' *',
+								''
+							)} field`
+						);
+					} else if (input.validity.tooShort) {
+						input.setCustomValidity(
+							`Please enter at least ${input.minLength} characters`
+						);
+					} else if (input.validity.tooLong) {
+						input.setCustomValidity(
+							`Please enter no more than ${input.maxLength} characters`
+						);
+					} else if (input.validity.typeMismatch) {
+						input.setCustomValidity(
+							'Please enter a valid email address'
+						);
+					} else if (input.validity.patternMismatch) {
+						input.setCustomValidity(
+							input.title || 'Please match the requested format'
+						);
+					}
+				});
+
+				input.addEventListener('input', () => {
+					input.setCustomValidity('');
+				});
+			});
+
+			// Form submission
+			form.addEventListener('submit', (e) => {
+				e.preventDefault();
+
+				if (form.checkValidity()) {
+					// In a real app, you'd send this to a server
+					console.log('Form data:', new FormData(form));
+
+					// Show success message
+					successMessage.classList.add('show');
+					form.reset();
+
+					// Hide success message after 5 seconds
+					setTimeout(() => {
+						successMessage.classList.remove('show');
+					}, 5000);
+				} else {
+					// Focus first invalid field
+					const firstInvalid = form.querySelector(':invalid');
+					if (firstInvalid) {
+						firstInvalid.focus();
+						firstInvalid.reportValidity();
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

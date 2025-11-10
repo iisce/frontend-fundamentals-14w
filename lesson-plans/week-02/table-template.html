@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Table Practice</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				max-width: 900px;
+				margin: 40px auto;
+				padding: 0 20px;
+				line-height: 1.6;
+			}
+
+			h1 {
+				color: #333;
+				border-bottom: 3px solid #007bff;
+				padding-bottom: 10px;
+			}
+
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				margin: 20px 0;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			caption {
+				font-weight: bold;
+				font-size: 1.1em;
+				margin-bottom: 10px;
+				text-align: left;
+				color: #555;
+			}
+
+			th,
+			td {
+				border: 1px solid #ddd;
+				padding: 12px;
+				text-align: left;
+			}
+
+			thead {
+				background-color: #007bff;
+				color: white;
+			}
+
+			thead th {
+				font-weight: bold;
+				border-color: #0056b3;
+			}
+
+			tbody tr:nth-child(even) {
+				background-color: #f8f9fa;
+			}
+
+			tbody tr:hover {
+				background-color: #e9ecef;
+			}
+
+			tbody th {
+				background-color: #f1f3f5;
+				font-weight: 600;
+			}
+
+			tfoot {
+				background-color: #e9ecef;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>My Table Practice</h1>
+
+		<!-- Example 1: Simple Data Table -->
+		<table>
+			<caption>
+				Example: User Information
+			</caption>
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Email</th>
+					<th scope="col">Role</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">Alice Johnson</th>
+					<td>alice@example.com</td>
+					<td>Developer</td>
+				</tr>
+				<tr>
+					<th scope="row">Bob Smith</th>
+					<td>bob@example.com</td>
+					<td>Designer</td>
+				</tr>
+				<tr>
+					<th scope="row">Carol White</th>
+					<td>carol@example.com</td>
+					<td>Manager</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- Add your own table below -->
+		<h2>Your Practice Table</h2>
+
+		<table>
+			<caption>
+				TODO: Add your caption here
+			</caption>
+			<thead>
+				<tr>
+					<th scope="col">Column 1</th>
+					<th scope="col">Column 2</th>
+					<th scope="col">Column 3</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">Row Header 1</th>
+					<td>Data 1</td>
+					<td>Data 2</td>
+				</tr>
+				<!-- Add more rows here -->
+			</tbody>
+		</table>
+	</body>
+</html>

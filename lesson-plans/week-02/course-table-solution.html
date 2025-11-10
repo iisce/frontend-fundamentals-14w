@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Course Schedule Table - Solution</title>
+		<style>
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				max-width: 1000px;
+				margin: 40px auto;
+				padding: 0 20px;
+				background-color: #f5f5f5;
+			}
+
+			h1 {
+				color: #2c3e50;
+				text-align: center;
+			}
+
+			.container {
+				background-color: white;
+				padding: 30px;
+				border-radius: 8px;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			}
+
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				margin: 20px 0;
+			}
+
+			caption {
+				font-weight: bold;
+				font-size: 1.2em;
+				margin-bottom: 15px;
+				text-align: left;
+				color: #34495e;
+				padding: 10px;
+				background-color: #ecf0f1;
+				border-radius: 4px;
+			}
+
+			th,
+			td {
+				border: 1px solid #bdc3c7;
+				padding: 12px 15px;
+				text-align: left;
+			}
+
+			thead {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+			}
+
+			thead th {
+				font-weight: 600;
+				text-transform: uppercase;
+				font-size: 0.9em;
+				letter-spacing: 0.5px;
+			}
+
+			tbody th {
+				background-color: #ecf0f1;
+				font-weight: 600;
+				color: #2c3e50;
+			}
+
+			tbody tr:nth-child(even) {
+				background-color: #f8f9fa;
+			}
+
+			tbody tr:hover {
+				background-color: #e3f2fd;
+				transition: background-color 0.2s;
+			}
+
+			.status-active {
+				color: #27ae60;
+				font-weight: 600;
+			}
+
+			.status-waitlist {
+				color: #e67e22;
+				font-weight: 600;
+			}
+
+			td:nth-child(3),
+			td:nth-child(4) {
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Course Schedule</h1>
+
+			<table>
+				<caption>
+					Available courses for Fall 2025 semester
+				</caption>
+				<thead>
+					<tr>
+						<th scope="col">Course Name</th>
+						<th scope="col">Instructor</th>
+						<th scope="col">Duration (weeks)</th>
+						<th scope="col">Enrollment</th>
+						<th scope="col">Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Introduction to Python</th>
+						<td>Dr. Sarah Chen</td>
+						<td>8</td>
+						<td>45</td>
+						<td class="status-active">Active</td>
+					</tr>
+					<tr>
+						<th scope="row">Web Development Basics</th>
+						<td>Prof. James Wilson</td>
+						<td>12</td>
+						<td>38</td>
+						<td class="status-active">Active</td>
+					</tr>
+					<tr>
+						<th scope="row">Data Structures</th>
+						<td>Dr. Maria Garcia</td>
+						<td>10</td>
+						<td>52</td>
+						<td class="status-active">Active</td>
+					</tr>
+					<tr>
+						<th scope="row">Mobile App Design</th>
+						<td>Alex Thompson</td>
+						<td>6</td>
+						<td>29</td>
+						<td class="status-active">Active</td>
+					</tr>
+					<tr>
+						<th scope="row">Database Systems</th>
+						<td>Dr. Robert Lee</td>
+						<td>14</td>
+						<td>41</td>
+						<td class="status-active">Active</td>
+					</tr>
+					<tr>
+						<th scope="row">Machine Learning</th>
+						<td>Dr. Emily Brown</td>
+						<td>16</td>
+						<td>35</td>
+						<td class="status-waitlist">Waitlist</td>
+					</tr>
+					<tr>
+						<th scope="row">Cloud Computing</th>
+						<td>Prof. David Kumar</td>
+						<td>8</td>
+						<td>48</td>
+						<td class="status-active">Active</td>
+					</tr>
+					<tr>
+						<th scope="row">Cybersecurity Fundamentals</th>
+						<td>Dr. Lisa Martinez</td>
+						<td>10</td>
+						<td>44</td>
+						<td class="status-active">Active</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h2>What Makes This Table Accessible?</h2>
+			<ul>
+				<li>
+					<strong>Caption:</strong> Describes what the table contains
+				</li>
+				<li>
+					<strong>Column Headers:</strong> All use
+					<code>&lt;th scope="col"&gt;</code>
+				</li>
+				<li>
+					<strong>Row Headers:</strong> Course names use
+					<code>&lt;th scope="row"&gt;</code>
+				</li>
+				<li>
+					<strong>Semantic Structure:</strong> Uses
+					<code>&lt;thead&gt;</code> and <code>&lt;tbody&gt;</code>
+				</li>
+				<li>
+					<strong>Consistent Cells:</strong> Every row has exactly 5
+					cells
+				</li>
+				<li>
+					<strong>No Empty Cells:</strong> All cells contain
+					meaningful data
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Form Validation Practice Template</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				min-height: 100vh;
+				padding: 40px 20px;
+			}
+
+			.container {
+				max-width: 600px;
+				margin: 0 auto;
+				background: white;
+				padding: 40px;
+				border-radius: 12px;
+				box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+			}
+
+			h1 {
+				color: #2c3e50;
+				margin-bottom: 10px;
+				text-align: center;
+			}
+
+			.subtitle {
+				text-align: center;
+				color: #7f8c8d;
+				margin-bottom: 30px;
+				font-size: 0.95em;
+			}
+
+			.instructions {
+				background: #fff3cd;
+				border-left: 4px solid #ffc107;
+				padding: 15px;
+				margin-bottom: 30px;
+				border-radius: 4px;
+			}
+
+			.instructions h3 {
+				color: #856404;
+				margin-bottom: 10px;
+				font-size: 1em;
+			}
+
+			.instructions ul {
+				margin-left: 20px;
+				color: #856404;
+			}
+
+			.instructions li {
+				margin: 5px 0;
+			}
+
+			form {
+				display: flex;
+				flex-direction: column;
+				gap: 25px;
+			}
+
+			fieldset {
+				border: 2px solid #e0e0e0;
+				border-radius: 8px;
+				padding: 20px;
+				background: #f8f9fa;
+			}
+
+			legend {
+				font-weight: 600;
+				color: #2c3e50;
+				padding: 0 10px;
+				font-size: 1.1em;
+			}
+
+			.form-field {
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+
+			label {
+				font-weight: 600;
+				color: #34495e;
+				font-size: 0.95em;
+			}
+
+			input,
+			textarea {
+				padding: 12px;
+				border: 2px solid #ddd;
+				border-radius: 6px;
+				font-size: 1em;
+				font-family: inherit;
+				transition: border-color 0.3s, box-shadow 0.3s;
+			}
+
+			input:focus,
+			textarea:focus {
+				outline: none;
+				border-color: #667eea;
+				box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+			}
+
+			/* TODO: Add validation styling */
+			/* Hint: Use :valid, :invalid, :required pseudo-classes */
+
+			input:valid {
+				border-color: #28a745;
+			}
+
+			input:invalid:not(:placeholder-shown) {
+				border-color: #dc3545;
+			}
+
+			.help-text {
+				font-size: 0.85em;
+				color: #6c757d;
+				line-height: 1.4;
+			}
+
+			.error-text {
+				font-size: 0.85em;
+				color: #dc3545;
+				display: none;
+				line-height: 1.4;
+			}
+
+			/* Show error when input is invalid and has been interacted with */
+			input:invalid:not(:placeholder-shown) ~ .error-text {
+				display: block;
+			}
+
+			button[type='submit'] {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				padding: 14px 28px;
+				border: none;
+				border-radius: 6px;
+				font-size: 1.05em;
+				font-weight: 600;
+				cursor: pointer;
+				transition: transform 0.2s, box-shadow 0.2s;
+				margin-top: 10px;
+			}
+
+			button[type='submit']:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+			}
+
+			button[type='submit']:active {
+				transform: translateY(0);
+			}
+
+			.required-note {
+				font-size: 0.9em;
+				color: #6c757d;
+				font-style: italic;
+				text-align: center;
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>🎯 Validation Practice Form</h1>
+			<p class="subtitle">
+				Add validation attributes to make this form more robust
+			</p>
+
+			<div class="instructions">
+				<h3>📝 Your Task:</h3>
+				<ul>
+					<li>
+						Add <code>required</code> to name, email, and message
+						fields
+					</li>
+					<li>
+						Set <code>minlength="2"</code> and
+						<code>maxlength="50"</code> on the name field
+					</li>
+					<li>Ensure email uses <code>type="email"</code></li>
+					<li>
+						Add <code>minlength="10"</code> to the message textarea
+					</li>
+					<li>
+						Add <code>pattern</code> and <code>title</code> to the
+						phone field
+					</li>
+					<li>
+						Connect help text using <code>aria-describedby</code>
+					</li>
+				</ul>
+			</div>
+
+			<form>
+				<fieldset>
+					<legend>Contact Information</legend>
+
+					<!-- TODO: Add validation attributes here -->
+					<div class="form-field">
+						<label for="name">Full Name</label>
+						<input
+							id="name"
+							name="name"
+							type="text"
+							placeholder="John Doe"
+						/>
+						<small
+							id="name-help"
+							class="help-text"
+						>
+							Please enter your first and last name (2-50
+							characters)
+						</small>
+					</div>
+
+					<!-- TODO: Add validation attributes here -->
+					<div class="form-field">
+						<label for="email">Email Address</label>
+						<input
+							id="email"
+							name="email"
+							type="text"
+							placeholder="you@example.com"
+						/>
+						<small
+							id="email-help"
+							class="help-text"
+						>
+							We'll never share your email with anyone
+						</small>
+					</div>
+
+					<!-- TODO: Add validation attributes here -->
+					<div class="form-field">
+						<label for="phone">Phone Number (Optional)</label>
+						<input
+							id="phone"
+							name="phone"
+							type="tel"
+							placeholder="(123) 456-7890"
+						/>
+						<small
+							id="phone-help"
+							class="help-text"
+						>
+							Format: (123) 456-7890 or 123-456-7890
+						</small>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend>Your Message</legend>
+
+					<!-- TODO: Add validation attributes here -->
+					<div class="form-field">
+						<label for="subject">Subject</label>
+						<input
+							id="subject"
+							name="subject"
+							type="text"
+							placeholder="Question about..."
+						/>
+						<small
+							id="subject-help"
+							class="help-text"
+						>
+							Brief topic of your message (optional)
+						</small>
+					</div>
+
+					<!-- TODO: Add validation attributes here -->
+					<div class="form-field">
+						<label for="message">Message</label>
+						<textarea
+							id="message"
+							name="message"
+							rows="5"
+							placeholder="Type your message here..."
+						></textarea>
+						<small
+							id="message-help"
+							class="help-text"
+						>
+							Please provide at least 10 characters
+						</small>
+					</div>
+				</fieldset>
+
+				<button type="submit">Send Message</button>
+				<p class="required-note">
+					* Required fields must be filled out
+				</p>
+			</form>
+		</div>
+
+		<script>
+			// Optional: Add custom validation messages
+			const form = document.querySelector('form');
+
+			form.addEventListener('submit', (e) => {
+				e.preventDefault();
+
+				if (form.checkValidity()) {
+					alert(
+						'✅ Form is valid! In a real application, this would submit to a server.'
+					);
+					form.reset();
+				} else {
+					alert(
+						'❌ Please fix the errors in the form before submitting.'
+					);
+				}
+			});
+		</script>
+	</body>
+</html>

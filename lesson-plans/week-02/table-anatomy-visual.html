@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Table Anatomy Visual Guide</title>
+		<style>
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				max-width: 1200px;
+				margin: 40px auto;
+				padding: 0 20px;
+				line-height: 1.6;
+			}
+
+			h1 {
+				color: #2c3e50;
+				text-align: center;
+				margin-bottom: 10px;
+			}
+
+			.subtitle {
+				text-align: center;
+				color: #7f8c8d;
+				margin-bottom: 40px;
+			}
+
+			.example-section {
+				margin: 40px 0;
+				padding: 20px;
+				background: #f8f9fa;
+				border-radius: 8px;
+			}
+
+			.example-section h2 {
+				color: #34495e;
+				margin-top: 0;
+			}
+
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				margin: 20px 0;
+				background: white;
+			}
+
+			caption {
+				font-weight: bold;
+				font-size: 1.1em;
+				margin-bottom: 10px;
+				padding: 10px;
+				background: #fff3cd;
+				border: 2px dashed #ffc107;
+				border-radius: 4px;
+				position: relative;
+			}
+
+			caption::after {
+				content: '← CAPTION: Describes the table';
+				position: absolute;
+				right: 10px;
+				top: 50%;
+				transform: translateY(-50%);
+				font-size: 0.8em;
+				color: #856404;
+				font-weight: normal;
+			}
+
+			th,
+			td {
+				border: 2px solid #dee2e6;
+				padding: 12px;
+				text-align: left;
+				position: relative;
+			}
+
+			thead {
+				background-color: #d1ecf1;
+				border: 3px solid #17a2b8;
+			}
+
+			thead th {
+				font-weight: bold;
+				color: #0c5460;
+			}
+
+			tbody {
+				border: 3px solid #28a745;
+			}
+
+			tbody th {
+				background-color: #d4edda;
+				font-weight: 600;
+				color: #155724;
+			}
+
+			tbody td {
+				background-color: white;
+			}
+
+			tfoot {
+				background-color: #f8d7da;
+				border: 3px solid #dc3545;
+			}
+
+			tfoot th,
+			tfoot td {
+				font-weight: bold;
+				color: #721c24;
+			}
+
+			.label {
+				position: absolute;
+				font-size: 0.75em;
+				font-weight: normal;
+				padding: 2px 6px;
+				border-radius: 3px;
+				white-space: nowrap;
+			}
+
+			.label-col {
+				top: -20px;
+				left: 50%;
+				transform: translateX(-50%);
+				background: #17a2b8;
+				color: white;
+			}
+
+			.label-row {
+				left: -120px;
+				top: 50%;
+				transform: translateY(-50%);
+				background: #28a745;
+				color: white;
+			}
+
+			.legend {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 15px;
+				margin: 30px 0;
+			}
+
+			.legend-item {
+				padding: 10px;
+				border-radius: 4px;
+				border: 2px solid;
+			}
+
+			.legend-caption {
+				background: #fff3cd;
+				border-color: #ffc107;
+				color: #856404;
+			}
+
+			.legend-thead {
+				background: #d1ecf1;
+				border-color: #17a2b8;
+				color: #0c5460;
+			}
+
+			.legend-tbody {
+				background: #d4edda;
+				border-color: #28a745;
+				color: #155724;
+			}
+
+			.legend-tfoot {
+				background: #f8d7da;
+				border-color: #dc3545;
+				color: #721c24;
+			}
+
+			.code-display {
+				background: #2d2d2d;
+				color: #f8f8f2;
+				padding: 20px;
+				border-radius: 4px;
+				overflow-x: auto;
+				margin: 20px 0;
+			}
+
+			.code-display code {
+				font-family: 'Courier New', monospace;
+				line-height: 1.8;
+			}
+
+			.highlight-caption {
+				color: #ffc107;
+			}
+			.highlight-thead {
+				color: #17a2b8;
+			}
+			.highlight-tbody {
+				color: #28a745;
+			}
+			.highlight-tfoot {
+				color: #dc3545;
+			}
+			.highlight-tag {
+				color: #ff79c6;
+			}
+			.highlight-attr {
+				color: #50fa7b;
+			}
+			.highlight-value {
+				color: #f1fa8c;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>📊 HTML Table Anatomy: Visual Guide</h1>
+		<p class="subtitle">A color-coded breakdown of table structure</p>
+
+		<div class="legend">
+			<div class="legend-item legend-caption">
+				<strong>&lt;caption&gt;</strong><br />
+				Describes what the table shows
+			</div>
+			<div class="legend-item legend-thead">
+				<strong>&lt;thead&gt;</strong><br />
+				Contains column headers
+			</div>
+			<div class="legend-item legend-tbody">
+				<strong>&lt;tbody&gt;</strong><br />
+				Contains data rows
+			</div>
+			<div class="legend-item legend-tfoot">
+				<strong>&lt;tfoot&gt;</strong><br />
+				Contains footer/summary rows
+			</div>
+		</div>
+
+		<div class="example-section">
+			<h2>Visual Example: Complete Table Structure</h2>
+
+			<table>
+				<caption>
+					Monthly Sales Report — Q4 2025
+				</caption>
+				<thead>
+					<tr>
+						<th scope="col">
+							Month
+							<span class="label label-col">scope="col"</span>
+						</th>
+						<th scope="col">
+							Revenue
+							<span class="label label-col">scope="col"</span>
+						</th>
+						<th scope="col">
+							Expenses
+							<span class="label label-col">scope="col"</span>
+						</th>
+						<th scope="col">
+							Profit
+							<span class="label label-col">scope="col"</span>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">
+							October
+							<span class="label label-row">scope="row"</span>
+						</th>
+						<td>$45,000</td>
+						<td>$32,000</td>
+						<td>$13,000</td>
+					</tr>
+					<tr>
+						<th scope="row">
+							November
+							<span class="label label-row">scope="row"</span>
+						</th>
+						<td>$52,000</td>
+						<td>$35,000</td>
+						<td>$17,000</td>
+					</tr>
+					<tr>
+						<th scope="row">
+							December
+							<span class="label label-row">scope="row"</span>
+						</th>
+						<td>$68,000</td>
+						<td>$41,000</td>
+						<td>$27,000</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th scope="row">Total</th>
+						<td>$165,000</td>
+						<td>$108,000</td>
+						<td>$57,000</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+		<div class="example-section">
+			<h2>The Code Behind It</h2>
+
+			<div class="code-display">
+				<code>
+					<span class="highlight-tag">&lt;table&gt;</span><br />
+					&nbsp;&nbsp;<span class="highlight-tag highlight-caption"
+						>&lt;caption&gt;</span
+					>Monthly Sales Report — Q4 2025<span
+						class="highlight-tag highlight-caption"
+						>&lt;/caption&gt;</span
+					><br />
+					<br />
+					&nbsp;&nbsp;<span class="highlight-tag highlight-thead"
+						>&lt;thead&gt;</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight-tag"
+						>&lt;tr&gt;</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+						class="highlight-tag"
+						>&lt;th <span class="highlight-attr">scope</span>=<span
+							class="highlight-value"
+							>"col"</span
+						>&gt;</span
+					>Month<span class="highlight-tag">&lt;/th&gt;</span><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+						class="highlight-tag"
+						>&lt;th <span class="highlight-attr">scope</span>=<span
+							class="highlight-value"
+							>"col"</span
+						>&gt;</span
+					>Revenue<span class="highlight-tag">&lt;/th&gt;</span><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+						class="highlight-tag"
+						>&lt;th <span class="highlight-attr">scope</span>=<span
+							class="highlight-value"
+							>"col"</span
+						>&gt;</span
+					>Expenses<span class="highlight-tag">&lt;/th&gt;</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+						class="highlight-tag"
+						>&lt;th <span class="highlight-attr">scope</span>=<span
+							class="highlight-value"
+							>"col"</span
+						>&gt;</span
+					>Profit<span class="highlight-tag">&lt;/th&gt;</span><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight-tag"
+						>&lt;/tr&gt;</span
+					><br />
+					&nbsp;&nbsp;<span class="highlight-tag highlight-thead"
+						>&lt;/thead&gt;</span
+					><br />
+					<br />
+					&nbsp;&nbsp;<span class="highlight-tag highlight-tbody"
+						>&lt;tbody&gt;</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight-tag"
+						>&lt;tr&gt;</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+						class="highlight-tag"
+						>&lt;th <span class="highlight-attr">scope</span>=<span
+							class="highlight-value"
+							>"row"</span
+						>&gt;</span
+					>October<span class="highlight-tag">&lt;/th&gt;</span><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+						class="highlight-tag"
+						>&lt;td&gt;</span
+					>$45,000<span class="highlight-tag">&lt;/td&gt;</span><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+						class="highlight-tag"
+						>&lt;td&gt;</span
+					>$32,000<span class="highlight-tag">&lt;/td&gt;</span><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+						class="highlight-tag"
+						>&lt;td&gt;</span
+					>$13,000<span class="highlight-tag">&lt;/td&gt;</span><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight-tag"
+						>&lt;/tr&gt;</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"
+						><!-- More rows... --></span
+					><br />
+					&nbsp;&nbsp;<span class="highlight-tag highlight-tbody"
+						>&lt;/tbody&gt;</span
+					><br />
+					<br />
+					&nbsp;&nbsp;<span class="highlight-tag highlight-tfoot"
+						>&lt;tfoot&gt;</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight-tag"
+						>&lt;tr&gt;</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+						class="highlight-tag"
+						>&lt;th <span class="highlight-attr">scope</span>=<span
+							class="highlight-value"
+							>"row"</span
+						>&gt;</span
+					>Total<span class="highlight-tag">&lt;/th&gt;</span><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+						class="highlight-tag"
+						>&lt;td&gt;</span
+					>$165,000<span class="highlight-tag">&lt;/td&gt;</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+						class="highlight-tag"
+						>&lt;td&gt;</span
+					>$108,000<span class="highlight-tag">&lt;/td&gt;</span
+					><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+						class="highlight-tag"
+						>&lt;td&gt;</span
+					>$57,000<span class="highlight-tag">&lt;/td&gt;</span><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight-tag"
+						>&lt;/tr&gt;</span
+					><br />
+					&nbsp;&nbsp;<span class="highlight-tag highlight-tfoot"
+						>&lt;/tfoot&gt;</span
+					><br />
+					<span class="highlight-tag">&lt;/table&gt;</span>
+				</code>
+			</div>
+		</div>
+
+		<div class="example-section">
+			<h2>Key Takeaways</h2>
+			<ul>
+				<li>
+					<strong>&lt;caption&gt;</strong> comes first, right after
+					&lt;table&gt;
+				</li>
+				<li>
+					<strong>&lt;thead&gt;</strong> contains column headers with
+					<code>scope="col"</code>
+				</li>
+				<li>
+					<strong>&lt;tbody&gt;</strong> contains data rows; first
+					cell often uses <code>scope="row"</code>
+				</li>
+				<li>
+					<strong>&lt;tfoot&gt;</strong> is optional, used for totals
+					or summaries
+				</li>
+				<li>
+					Each <strong>&lt;tr&gt;</strong> (table row) must have the
+					same number of cells
+				</li>
+				<li>
+					Use <strong>&lt;th&gt;</strong> for headers,
+					<strong>&lt;td&gt;</strong> for data
+				</li>
+				<li>
+					The <strong>scope</strong> attribute tells screen readers
+					what each header applies to
+				</li>
+			</ul>
+		</div>
+
+		<div class="example-section">
+			<h2>🎯 Practice Challenge</h2>
+			<p>Create a table with this structure:</p>
+			<ol>
+				<li>A caption describing "Student Grades"</li>
+				<li>Column headers: Student, Math, Science, English</li>
+				<li>3 student rows with sample grades</li>
+				<li>A footer row showing "Average" grades</li>
+			</ol>
+			<p>
+				<strong>Bonus:</strong> Add the color-coding CSS to visualize
+				the different sections!
+			</p>
+		</div>
+	</body>
+</html>
