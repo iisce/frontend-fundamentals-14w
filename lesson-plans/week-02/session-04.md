@@ -457,6 +457,59 @@ Save your file as `menu-table.html` and test it in your browser.
 
 ---
 
+## Bonus Assignment: Class Schedule Table (30–45 minutes)
+
+### Project: Build a Weekly Class Schedule
+
+Create an HTML table that displays a weekly class schedule with the following specifications:
+
+**Data to include:**
+
+-   At least 5 time slots (e.g., 9:00 AM, 10:00 AM, 11:00 AM, etc.)
+-   Columns for Monday through Friday
+-   Class names with room numbers
+
+**Example data:**
+| Time | Monday | Tuesday | Wednesday | Thursday | Friday |
+|----------|-------------|-------------|-------------|-------------|-------------|
+| 9:00 AM | Math 101<br>Room 204 | Chemistry<br>Lab A | Math 101<br>Room 204 | Chemistry<br>Lab A | Free |
+| 10:00 AM | English<br>Room 115 | Free | English<br>Room 115 | Free | Computer Lab |
+| 11:00 AM | Physics<br>Room 301 | History<br>Room 220 | Physics<br>Room 301 | History<br>Room 220 | Free |
+
+### Requirements Checklist
+
+Your submission must include:
+
+-   [ ] A complete HTML file with proper document structure
+-   [ ] A descriptive `<caption>` (e.g., "Fall 2025 Weekly Class Schedule")
+-   [ ] Column headers for each day using `<th scope="col">`
+-   [ ] Row headers for time slots using `<th scope="row">`
+-   [ ] Properly structured with `<thead>` and `<tbody>`
+-   [ ] At least 5 time slots (rows)
+-   [ ] All 5 weekdays represented (columns)
+-   [ ] Use `<br>` tags to separate class name and room number within cells
+-   [ ] Indicate "Free" or "Break" for empty time slots (no blank cells)
+-   [ ] Optional: Use `<tfoot>` for a summary row (e.g., "Total classes: 12")
+
+### Submission
+
+Save your file as `class-schedule.html` and test it in your browser.
+
+**Self-grading questions:**
+
+1. Does your table clearly show when and where each class meets?
+2. Are time slots properly marked as row headers with `scope="row"`?
+3. Are weekday names properly marked as column headers with `scope="col"`?
+4. Would a screen reader user be able to understand "Physics at 11:00 AM on Monday in Room 301"?
+
+### Bonus Challenge (Optional)
+
+-   Add a `<tfoot>` section showing total hours of class per day
+-   Style the table with CSS to use different background colors for different subjects
+-   Use `colspan` to show a lunch break that spans all weekdays (e.g., 12:00 PM - 1:00 PM)
+
+---
+
 ## Troubleshooting Guide
 
 ### Problem: Headers aren't visually distinct
