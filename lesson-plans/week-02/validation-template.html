@@ -218,6 +218,9 @@
 							id="name"
 							name="name"
 							type="text"
+							required
+							minlength="2"
+							maxlength="50"
 							placeholder="John Doe"
 						/>
 						<small
@@ -235,7 +238,8 @@
 						<input
 							id="email"
 							name="email"
-							type="text"
+							type="email"
+							required
 							placeholder="you@example.com"
 						/>
 						<small
@@ -253,7 +257,9 @@
 							id="phone"
 							name="phone"
 							type="tel"
+							pattern="[\(]?[0-9]{3}[\)]?[\s\-]?[0-9]{3}[\s\-]?[0-9]{4}"
 							placeholder="(123) 456-7890"
+							title="Format should be (123) 456-7890 or 123-456-7890"
 						/>
 						<small
 							id="phone-help"
@@ -292,6 +298,9 @@
 							name="message"
 							rows="5"
 							placeholder="Type your message here..."
+							required
+							minlength="10"
+							aria-describedby="message-help"
 						></textarea>
 						<small
 							id="message-help"
