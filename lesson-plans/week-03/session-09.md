@@ -71,11 +71,11 @@ The `display` property controls how an element is displayed and how it interacts
 
 ```css
 .block-element {
-    display: block;
-    width: 300px;
-    height: 100px;
-    background-color: lightblue;
-    margin-bottom: 10px;
+	display: block;
+	width: 300px;
+	height: 100px;
+	background-color: lightblue;
+	margin-bottom: 10px;
 }
 ```
 
@@ -99,9 +99,9 @@ The `display` property controls how an element is displayed and how it interacts
 
 ```css
 .inline-element {
-    display: inline;
-    background-color: yellow;
-    /* width and height are ignored! */
+	display: inline;
+	background-color: yellow;
+	/* width and height are ignored! */
 }
 ```
 
@@ -122,11 +122,11 @@ The `display` property controls how an element is displayed and how it interacts
 
 ```css
 .inline-block-element {
-    display: inline-block;
-    width: 150px;
-    height: 100px;
-    background-color: lightcoral;
-    margin-right: 10px;
+	display: inline-block;
+	width: 150px;
+	height: 100px;
+	background-color: lightcoral;
+	margin-right: 10px;
 }
 ```
 
@@ -143,7 +143,7 @@ Completely removes the element from the page (doesn't take up space).
 
 ```css
 .hidden {
-    display: none;
+	display: none;
 }
 ```
 
@@ -152,23 +152,23 @@ Completely removes the element from the page (doesn't take up space).
 ```css
 /* Takes up space but is invisible */
 .invisible {
-    visibility: hidden;
+	visibility: hidden;
 }
 
 /* Doesn't take up space at all */
 .hidden {
-    display: none;
+	display: none;
 }
 ```
 
 ### Common Display Values Summary
 
 | Value          | Behavior                                   | Width/Height | New Line |
-|----------------|---------------------------------------------|--------------|----------|
-| `block`        | Full width, stacks vertically               | ✅ Yes       | ✅ Yes   |
-| `inline`       | Only content width, flows horizontally      | ❌ No        | ❌ No    |
-| `inline-block` | Flows horizontally but can have dimensions  | ✅ Yes       | ❌ No    |
-| `none`         | Hidden, takes no space                      | ❌ No        | N/A      |
+| -------------- | ------------------------------------------ | ------------ | -------- |
+| `block`        | Full width, stacks vertically              | ✅ Yes       | ✅ Yes   |
+| `inline`       | Only content width, flows horizontally     | ❌ No        | ❌ No    |
+| `inline-block` | Flows horizontally but can have dimensions | ✅ Yes       | ❌ No    |
+| `none`         | Hidden, takes no space                     | ❌ No        | N/A      |
 
 <details>
 <summary>💡 Knowledge Check #1</summary>
@@ -203,8 +203,8 @@ Elements are positioned according to the normal document flow.
 
 ```css
 .static-element {
-    position: static;
-    /* This is the default - usually not needed */
+	position: static;
+	/* This is the default - usually not needed */
 }
 ```
 
@@ -220,9 +220,9 @@ Element is positioned **relative to its normal position**.
 
 ```css
 .relative-box {
-    position: relative;
-    top: 20px;      /* Moves 20px DOWN from normal position */
-    left: 30px;     /* Moves 30px RIGHT from normal position */
+	position: relative;
+	top: 20px; /* Moves 20px DOWN from normal position */
+	left: 30px; /* Moves 30px RIGHT from normal position */
 }
 ```
 
@@ -236,20 +236,20 @@ Element is positioned **relative to its normal position**.
 
 ```html
 <style>
-    .box {
-        width: 100px;
-        height: 100px;
-        background-color: lightblue;
-        margin: 10px;
-        display: inline-block;
-    }
-    
-    .relative {
-        position: relative;
-        top: 20px;
-        left: 20px;
-        background-color: lightcoral;
-    }
+	.box {
+		width: 100px;
+		height: 100px;
+		background-color: lightblue;
+		margin: 10px;
+		display: inline-block;
+	}
+
+	.relative {
+		position: relative;
+		top: 20px;
+		left: 20px;
+		background-color: lightcoral;
+	}
 </style>
 
 <div class="box">Box 1</div>
@@ -264,19 +264,19 @@ Element is removed from normal document flow and positioned relative to its **ne
 
 ```css
 .container {
-    position: relative;  /* Creates positioning context */
-    width: 400px;
-    height: 300px;
-    background-color: lightgray;
+	position: relative; /* Creates positioning context */
+	width: 400px;
+	height: 300px;
+	background-color: lightgray;
 }
 
 .absolute-box {
-    position: absolute;
-    top: 20px;      /* 20px from top of .container */
-    right: 20px;    /* 20px from right of .container */
-    width: 100px;
-    height: 100px;
-    background-color: red;
+	position: absolute;
+	top: 20px; /* 20px from top of .container */
+	right: 20px; /* 20px from right of .container */
+	width: 100px;
+	height: 100px;
+	background-color: red;
 }
 ```
 
@@ -299,30 +299,30 @@ Element is removed from normal document flow and positioned relative to its **ne
 
 ```html
 <style>
-    .card {
-        position: relative;
-        width: 300px;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-    }
-    
-    .badge {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: red;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 12px;
-        font-size: 12px;
-    }
+	.card {
+		position: relative;
+		width: 300px;
+		padding: 20px;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+	}
+
+	.badge {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		background-color: red;
+		color: white;
+		padding: 5px 10px;
+		border-radius: 12px;
+		font-size: 12px;
+	}
 </style>
 
 <div class="card">
-    <div class="badge">NEW</div>
-    <h3>Product Title</h3>
-    <p>Product description goes here...</p>
+	<div class="badge">NEW</div>
+	<h3>Product Title</h3>
+	<p>Product description goes here...</p>
 </div>
 ```
 
@@ -343,14 +343,14 @@ Element is positioned relative to the **viewport** (browser window). It stays in
 
 ```css
 .fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    z-index: 1000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #333;
+	color: white;
+	padding: 20px;
+	z-index: 1000;
 }
 ```
 
@@ -372,35 +372,35 @@ Element is positioned relative to the **viewport** (browser window). It stays in
 
 ```html
 <style>
-    body {
-        margin: 0;
-        padding-top: 60px; /* Space for fixed header */
-    }
-    
-    .fixed-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 60px;
-        background-color: #333;
-        color: white;
-        display: flex;
-        align-items: center;
-        padding: 0 20px;
-        z-index: 1000;
-    }
-    
-    .content {
-        height: 2000px; /* Long content to scroll */
-    }
+	body {
+		margin: 0;
+		padding-top: 60px; /* Space for fixed header */
+	}
+
+	.fixed-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 60px;
+		background-color: #333;
+		color: white;
+		display: flex;
+		align-items: center;
+		padding: 0 20px;
+		z-index: 1000;
+	}
+
+	.content {
+		height: 2000px; /* Long content to scroll */
+	}
 </style>
 
 <nav class="fixed-nav">
-    <h1>My Website</h1>
+	<h1>My Website</h1>
 </nav>
 <div class="content">
-    <p>Scroll down and the header stays at the top!</p>
+	<p>Scroll down and the header stays at the top!</p>
 </div>
 ```
 
@@ -410,11 +410,11 @@ A hybrid of `relative` and `fixed`. Element is relative until you scroll to a th
 
 ```css
 .sticky-header {
-    position: sticky;
-    top: 0;  /* Stick to top when you scroll to it */
-    background-color: white;
-    padding: 10px;
-    border-bottom: 2px solid #333;
+	position: sticky;
+	top: 0; /* Stick to top when you scroll to it */
+	background-color: white;
+	padding: 10px;
+	border-bottom: 2px solid #333;
 }
 ```
 
@@ -435,42 +435,42 @@ A hybrid of `relative` and `fixed`. Element is relative until you scroll to a th
 
 ```html
 <style>
-    .section-header {
-        position: sticky;
-        top: 0;
-        background-color: #f0f0f0;
-        padding: 10px;
-        font-weight: bold;
-        border-bottom: 2px solid #333;
-    }
-    
-    .section-content {
-        height: 400px;
-        padding: 20px;
-    }
+	.section-header {
+		position: sticky;
+		top: 0;
+		background-color: #f0f0f0;
+		padding: 10px;
+		font-weight: bold;
+		border-bottom: 2px solid #333;
+	}
+
+	.section-content {
+		height: 400px;
+		padding: 20px;
+	}
 </style>
 
 <div>
-    <h2 class="section-header">Section 1</h2>
-    <div class="section-content">Content for section 1...</div>
-    
-    <h2 class="section-header">Section 2</h2>
-    <div class="section-content">Content for section 2...</div>
-    
-    <h2 class="section-header">Section 3</h2>
-    <div class="section-content">Content for section 3...</div>
+	<h2 class="section-header">Section 1</h2>
+	<div class="section-content">Content for section 1...</div>
+
+	<h2 class="section-header">Section 2</h2>
+	<div class="section-content">Content for section 2...</div>
+
+	<h2 class="section-header">Section 3</h2>
+	<div class="section-content">Content for section 3...</div>
 </div>
 ```
 
 ### Position Values Summary
 
-| Value      | Flow          | Relative To                        | Scrolls | Common Use                |
-|------------|---------------|------------------------------------|---------|---------------------------|
-| `static`   | Normal        | Normal flow                        | ✅ Yes  | Default                   |
-| `relative` | Normal (space reserved) | Its normal position     | ✅ Yes  | Minor adjustments, context|
-| `absolute` | Removed       | Nearest positioned ancestor        | ✅ Yes  | Tooltips, badges, dropdowns|
-| `fixed`    | Removed       | Viewport (browser window)          | ❌ No   | Fixed headers, modals     |
-| `sticky`   | Hybrid        | Container + viewport               | Hybrid  | Sticky headers, sidebars  |
+| Value      | Flow                    | Relative To                 | Scrolls | Common Use                  |
+| ---------- | ----------------------- | --------------------------- | ------- | --------------------------- |
+| `static`   | Normal                  | Normal flow                 | ✅ Yes  | Default                     |
+| `relative` | Normal (space reserved) | Its normal position         | ✅ Yes  | Minor adjustments, context  |
+| `absolute` | Removed                 | Nearest positioned ancestor | ✅ Yes  | Tooltips, badges, dropdowns |
+| `fixed`    | Removed                 | Viewport (browser window)   | ❌ No   | Fixed headers, modals       |
+| `sticky`   | Hybrid                  | Container + viewport        | Hybrid  | Sticky headers, sidebars    |
 
 ---
 
@@ -482,11 +482,11 @@ These properties work with `position: relative`, `absolute`, `fixed`, and `stick
 
 ```css
 .positioned {
-    position: absolute;
-    top: 20px;      /* Distance from top */
-    right: 30px;    /* Distance from right */
-    bottom: 40px;   /* Distance from bottom */
-    left: 50px;     /* Distance from left */
+	position: absolute;
+	top: 20px; /* Distance from top */
+	right: 30px; /* Distance from right */
+	bottom: 40px; /* Distance from bottom */
+	left: 50px; /* Distance from left */
 }
 ```
 
@@ -497,34 +497,34 @@ These properties work with `position: relative`, `absolute`, `fixed`, and `stick
 ```css
 /* Top-right corner */
 .top-right {
-    position: absolute;
-    top: 0;
-    right: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 /* Bottom-left corner */
 .bottom-left {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
 
 /* Centered (with transform) */
 .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 /* Full coverage */
 .overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    /* Or use: width: 100%; height: 100%; */
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	/* Or use: width: 100%; height: 100%; */
 }
 ```
 
@@ -534,18 +534,18 @@ Controls which elements appear on top when they overlap.
 
 ```css
 .element1 {
-    position: relative;
-    z-index: 1;
+	position: relative;
+	z-index: 1;
 }
 
 .element2 {
-    position: relative;
-    z-index: 2;  /* This appears on top */
+	position: relative;
+	z-index: 2; /* This appears on top */
 }
 
 .element3 {
-    position: relative;
-    z-index: 3;  /* This appears on top of both */
+	position: relative;
+	z-index: 3; /* This appears on top of both */
 }
 ```
 
@@ -560,45 +560,55 @@ Controls which elements appear on top when they overlap.
 
 ```css
 /* Typical z-index scale */
-.dropdown { z-index: 100; }
-.modal-backdrop { z-index: 1000; }
-.modal { z-index: 1001; }
-.tooltip { z-index: 1500; }
-.notification { z-index: 2000; }
+.dropdown {
+	z-index: 100;
+}
+.modal-backdrop {
+	z-index: 1000;
+}
+.modal {
+	z-index: 1001;
+}
+.tooltip {
+	z-index: 1500;
+}
+.notification {
+	z-index: 2000;
+}
 ```
 
 **Example: Modal Overlay**
 
 ```html
 <style>
-    .modal-backdrop {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-    }
-    
-    .modal {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        padding: 30px;
-        border-radius: 8px;
-        z-index: 1001; /* Above backdrop */
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
+	.modal-backdrop {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 1000;
+	}
+
+	.modal {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: white;
+		padding: 30px;
+		border-radius: 8px;
+		z-index: 1001; /* Above backdrop */
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+	}
 </style>
 
 <div class="modal-backdrop"></div>
 <div class="modal">
-    <h2>Modal Title</h2>
-    <p>Modal content goes here...</p>
-    <button>Close</button>
+	<h2>Modal Title</h2>
+	<p>Modal content goes here...</p>
+	<button>Close</button>
 </div>
 ```
 
@@ -623,15 +633,15 @@ Makes an element float to the left or right, allowing text and inline elements t
 
 ```css
 .float-left {
-    float: left;
-    width: 200px;
-    margin-right: 20px;
+	float: left;
+	width: 200px;
+	margin-right: 20px;
 }
 
 .float-right {
-    float: right;
-    width: 200px;
-    margin-left: 20px;
+	float: right;
+	width: 200px;
+	margin-left: 20px;
 }
 ```
 
@@ -645,19 +655,25 @@ Makes an element float to the left or right, allowing text and inline elements t
 
 ```html
 <style>
-    .article-image {
-        float: left;
-        width: 200px;
-        margin: 0 20px 10px 0;
-        border-radius: 8px;
-    }
+	.article-image {
+		float: left;
+		width: 200px;
+		margin: 0 20px 10px 0;
+		border-radius: 8px;
+	}
 </style>
 
 <article>
-    <img src="image.jpg" class="article-image" alt="Article image">
-    <p>This text wraps around the floated image on the left. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-    <p>More text continues to wrap around the image...</p>
+	<img
+		src="image.jpg"
+		class="article-image"
+		alt="Article image"
+	/>
+	<p>
+		This text wraps around the floated image on the left. Lorem ipsum dolor
+		sit amet, consectetur adipiscing elit...
+	</p>
+	<p>More text continues to wrap around the image...</p>
 </article>
 ```
 
@@ -667,15 +683,15 @@ Prevents elements from wrapping around floated elements.
 
 ```css
 .clear-left {
-    clear: left;   /* No floating elements on left */
+	clear: left; /* No floating elements on left */
 }
 
 .clear-right {
-    clear: right;  /* No floating elements on right */
+	clear: right; /* No floating elements on right */
 }
 
 .clear-both {
-    clear: both;   /* No floating elements on either side */
+	clear: both; /* No floating elements on either side */
 }
 ```
 
@@ -683,17 +699,17 @@ Prevents elements from wrapping around floated elements.
 
 ```html
 <style>
-    .float-box {
-        float: left;
-        width: 150px;
-        height: 100px;
-        background-color: lightblue;
-        margin: 10px;
-    }
-    
-    .clear {
-        clear: both;
-    }
+	.float-box {
+		float: left;
+		width: 150px;
+		height: 100px;
+		background-color: lightblue;
+		margin: 10px;
+	}
+
+	.clear {
+		clear: both;
+	}
 </style>
 
 <div class="float-box">Float 1</div>
@@ -709,7 +725,7 @@ When all children are floated, the parent container collapses (height becomes 0)
 
 ```html
 <div class="container">
-    <div style="float: left;">Floated content</div>
+	<div style="float: left;">Floated content</div>
 </div>
 <!-- Container has height of 0! -->
 ```
@@ -718,9 +734,9 @@ When all children are floated, the parent container collapses (height becomes 0)
 
 ```css
 .clearfix::after {
-    content: "";
-    display: table;
-    clear: both;
+	content: '';
+	display: table;
+	clear: both;
 }
 ```
 
@@ -728,7 +744,7 @@ When all children are floated, the parent container collapses (height becomes 0)
 
 ```html
 <div class="container clearfix">
-    <div style="float: left;">Floated content</div>
+	<div style="float: left;">Floated content</div>
 </div>
 <!-- Container now has proper height! -->
 ```
@@ -743,34 +759,34 @@ When all children are floated, the parent container collapses (height becomes 0)
 
 ```html
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 60px;
-        background-color: #333;
-        color: white;
-        display: flex;
-        align-items: center;
-        padding: 0 20px;
-        z-index: 1000;
-    }
-    
-    .content {
-        padding-top: 60px; /* Height of header */
-    }
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 60px;
+		background-color: #333;
+		color: white;
+		display: flex;
+		align-items: center;
+		padding: 0 20px;
+		z-index: 1000;
+	}
+
+	.content {
+		padding-top: 60px; /* Height of header */
+	}
 </style>
 
 <header class="header">My Website</header>
 <main class="content">
-    <!-- Page content -->
+	<!-- Page content -->
 </main>
 ```
 
@@ -778,9 +794,9 @@ When all children are floated, the parent container collapses (height becomes 0)
 
 ```css
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
 }
 ```
 
@@ -788,35 +804,35 @@ When all children are floated, the parent container collapses (height becomes 0)
 
 ```html
 <style>
-    .card {
-        position: relative;
-        width: 300px;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-    }
-    
-    .badge {
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        background-color: red;
-        color: white;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        font-weight: bold;
-    }
+	.card {
+		position: relative;
+		width: 300px;
+		padding: 20px;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+	}
+
+	.badge {
+		position: absolute;
+		top: -10px;
+		right: -10px;
+		background-color: red;
+		color: white;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 12px;
+		font-weight: bold;
+	}
 </style>
 
 <div class="card">
-    <div class="badge">5</div>
-    <h3>Card Title</h3>
-    <p>Card content...</p>
+	<div class="badge">5</div>
+	<h3>Card Title</h3>
+	<p>Card content...</p>
 </div>
 ```
 
@@ -824,29 +840,29 @@ When all children are floated, the parent container collapses (height becomes 0)
 
 ```html
 <style>
-    .sidebar {
-        float: left;
-        width: 250px;
-        background-color: #f0f0f0;
-        padding: 20px;
-        min-height: 400px;
-    }
-    
-    .main-content {
-        margin-left: 270px; /* Sidebar width + gap */
-        padding: 20px;
-    }
-    
-    .container::after {
-        content: "";
-        display: table;
-        clear: both;
-    }
+	.sidebar {
+		float: left;
+		width: 250px;
+		background-color: #f0f0f0;
+		padding: 20px;
+		min-height: 400px;
+	}
+
+	.main-content {
+		margin-left: 270px; /* Sidebar width + gap */
+		padding: 20px;
+	}
+
+	.container::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
 </style>
 
 <div class="container">
-    <aside class="sidebar">Sidebar content</aside>
-    <main class="main-content">Main content</main>
+	<aside class="sidebar">Sidebar content</aside>
+	<main class="main-content">Main content</main>
 </div>
 ```
 
@@ -870,53 +886,56 @@ Create a webpage with a sticky navigation that sticks to the top when you scroll
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sticky Navigation</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-        }
-        
-        /* Add your CSS here */
-        
-    </style>
-</head>
-<body>
-    <header class="hero">
-        <h1>Welcome to My Website</h1>
-        <p>Scroll down to see the sticky navigation</p>
-    </header>
-    
-    <nav class="sticky-nav">
-        <a href="#section1">Section 1</a>
-        <a href="#section2">Section 2</a>
-        <a href="#section3">Section 3</a>
-    </nav>
-    
-    <section id="section1">
-        <h2>Section 1</h2>
-        <p>Content for section 1...</p>
-    </section>
-    
-    <section id="section2">
-        <h2>Section 2</h2>
-        <p>Content for section 2...</p>
-    </section>
-    
-    <section id="section3">
-        <h2>Section 3</h2>
-        <p>Content for section 3...</p>
-    </section>
-    
-    <a href="#top" class="back-to-top">↑</a>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Sticky Navigation</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: Arial, sans-serif;
+			}
+
+			/* Add your CSS here */
+		</style>
+	</head>
+	<body>
+		<header class="hero">
+			<h1>Welcome to My Website</h1>
+			<p>Scroll down to see the sticky navigation</p>
+		</header>
+
+		<nav class="sticky-nav">
+			<a href="#section1">Section 1</a>
+			<a href="#section2">Section 2</a>
+			<a href="#section3">Section 3</a>
+		</nav>
+
+		<section id="section1">
+			<h2>Section 1</h2>
+			<p>Content for section 1...</p>
+		</section>
+
+		<section id="section2">
+			<h2>Section 2</h2>
+			<p>Content for section 2...</p>
+		</section>
+
+		<section id="section3">
+			<h2>Section 3</h2>
+			<p>Content for section 3...</p>
+		</section>
+
+		<a
+			href="#top"
+			class="back-to-top"
+			>↑</a
+		>
+	</body>
 </html>
 ```
 
@@ -925,86 +944,86 @@ Create a webpage with a sticky navigation that sticks to the top when you scroll
 
 ```css
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
+	font-family: Arial, sans-serif;
 }
 
 .hero {
-    height: 400px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	height: 400px;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
+	font-size: 48px;
+	margin-bottom: 10px;
 }
 
 .sticky-nav {
-    position: sticky;
-    top: 0;
-    background-color: #333;
-    padding: 15px 20px;
-    display: flex;
-    gap: 30px;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	position: sticky;
+	top: 0;
+	background-color: #333;
+	padding: 15px 20px;
+	display: flex;
+	gap: 30px;
+	z-index: 100;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .sticky-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
 }
 
 .sticky-nav a:hover {
-    color: #667eea;
+	color: #667eea;
 }
 
 section {
-    padding: 80px 20px;
-    min-height: 500px;
+	padding: 80px 20px;
+	min-height: 500px;
 }
 
 section:nth-child(even) {
-    background-color: #f5f5f5;
+	background-color: #f5f5f5;
 }
 
 section h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: #333;
+	font-size: 32px;
+	margin-bottom: 20px;
+	color: #333;
 }
 
 .back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background-color: #667eea;
-    color: white;
-    text-decoration: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	width: 50px;
+	height: 50px;
+	background-color: #667eea;
+	color: white;
+	text-decoration: none;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	z-index: 1000;
 }
 
 .back-to-top:hover {
-    background-color: #5568d3;
+	background-color: #5568d3;
 }
 ```
 
@@ -1027,130 +1046,130 @@ Create a product card with positioned badges and overlays.
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Product Card</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            padding: 40px;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .product-card {
-            position: relative;
-            width: 300px;
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .product-image {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: #666;
-        }
-        
-        .badge {
-            position: absolute;
-            padding: 5px 15px;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            border-radius: 4px;
-        }
-        
-        .badge-sale {
-            top: 10px;
-            left: 10px;
-            background-color: #e74c3c;
-        }
-        
-        .badge-new {
-            top: 10px;
-            right: 10px;
-            background-color: #3498db;
-        }
-        
-        .product-info {
-            padding: 20px;
-        }
-        
-        .product-title {
-            margin: 0 0 10px 0;
-            font-size: 20px;
-            color: #333;
-        }
-        
-        .product-price {
-            font-size: 24px;
-            color: #e74c3c;
-            font-weight: bold;
-        }
-        
-        .product-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(102, 126, 234, 0.95);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .product-card:hover .product-overlay {
-            opacity: 1;
-        }
-        
-        .overlay-button {
-            margin-top: 20px;
-            padding: 10px 30px;
-            background-color: white;
-            color: #667eea;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <div class="product-card">
-        <div class="product-image">
-            <span class="badge badge-sale">SALE</span>
-            <span class="badge badge-new">NEW</span>
-            Product Image
-            <div class="product-overlay">
-                <h3>Quick View</h3>
-                <p>Hover to see details</p>
-                <button class="overlay-button">Add to Cart</button>
-            </div>
-        </div>
-        <div class="product-info">
-            <h3 class="product-title">Awesome Product</h3>
-            <div class="product-price">$29.99</div>
-        </div>
-    </div>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Product Card</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f0f0f0;
+				padding: 40px;
+				display: flex;
+				justify-content: center;
+			}
+
+			.product-card {
+				position: relative;
+				width: 300px;
+				background-color: white;
+				border-radius: 8px;
+				overflow: hidden;
+				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			}
+
+			.product-image {
+				position: relative;
+				width: 100%;
+				height: 300px;
+				background-color: #ddd;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 18px;
+				color: #666;
+			}
+
+			.badge {
+				position: absolute;
+				padding: 5px 15px;
+				color: white;
+				font-size: 12px;
+				font-weight: bold;
+				border-radius: 4px;
+			}
+
+			.badge-sale {
+				top: 10px;
+				left: 10px;
+				background-color: #e74c3c;
+			}
+
+			.badge-new {
+				top: 10px;
+				right: 10px;
+				background-color: #3498db;
+			}
+
+			.product-info {
+				padding: 20px;
+			}
+
+			.product-title {
+				margin: 0 0 10px 0;
+				font-size: 20px;
+				color: #333;
+			}
+
+			.product-price {
+				font-size: 24px;
+				color: #e74c3c;
+				font-weight: bold;
+			}
+
+			.product-overlay {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(102, 126, 234, 0.95);
+				color: white;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				opacity: 0;
+				transition: opacity 0.3s;
+			}
+
+			.product-card:hover .product-overlay {
+				opacity: 1;
+			}
+
+			.overlay-button {
+				margin-top: 20px;
+				padding: 10px 30px;
+				background-color: white;
+				color: #667eea;
+				border: none;
+				border-radius: 5px;
+				font-weight: bold;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="product-card">
+			<div class="product-image">
+				<span class="badge badge-sale">SALE</span>
+				<span class="badge badge-new">NEW</span>
+				Product Image
+				<div class="product-overlay">
+					<h3>Quick View</h3>
+					<p>Hover to see details</p>
+					<button class="overlay-button">Add to Cart</button>
+				</div>
+			</div>
+			<div class="product-info">
+				<h3 class="product-title">Awesome Product</h3>
+				<div class="product-price">$29.99</div>
+			</div>
+		</div>
+	</body>
 </html>
 ```
 
@@ -1165,19 +1184,19 @@ Create a product card with positioned badges and overlays.
 ```css
 /* ❌ WRONG: absolute child without positioned parent */
 .child {
-    position: absolute;
-    top: 20px;
-    /* Will position relative to <body>! */
+	position: absolute;
+	top: 20px;
+	/* Will position relative to <body>! */
 }
 
 /* ✅ CORRECT: Set parent position */
 .parent {
-    position: relative;  /* Creates positioning context */
+	position: relative; /* Creates positioning context */
 }
 
 .child {
-    position: absolute;
-    top: 20px;  /* Now positions relative to .parent */
+	position: absolute;
+	top: 20px; /* Now positions relative to .parent */
 }
 ```
 
@@ -1186,13 +1205,13 @@ Create a product card with positioned badges and overlays.
 ```css
 /* ❌ WRONG: z-index on static element */
 .element {
-    z-index: 100;  /* Has no effect! */
+	z-index: 100; /* Has no effect! */
 }
 
 /* ✅ CORRECT: Add position property */
 .element {
-    position: relative;  /* or absolute, fixed, sticky */
-    z-index: 100;  /* Now it works! */
+	position: relative; /* or absolute, fixed, sticky */
+	z-index: 100; /* Now it works! */
 }
 ```
 
@@ -1201,17 +1220,17 @@ Create a product card with positioned badges and overlays.
 ```css
 /* ❌ WRONG: Fixed header not full width */
 .header {
-    position: fixed;
-    top: 0;
-    /* Doesn't stretch across screen */
+	position: fixed;
+	top: 0;
+	/* Doesn't stretch across screen */
 }
 
 /* ✅ CORRECT: Set width and position */
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
 }
 ```
 
@@ -1220,15 +1239,15 @@ Create a product card with positioned badges and overlays.
 ```css
 /* ❌ WRONG: Content hidden behind fixed header */
 .header {
-    position: fixed;
-    top: 0;
-    height: 60px;
+	position: fixed;
+	top: 0;
+	height: 60px;
 }
 /* Content starts at top and is hidden */
 
 /* ✅ CORRECT: Add padding to body */
 body {
-    padding-top: 60px;  /* Same as header height */
+	padding-top: 60px; /* Same as header height */
 }
 ```
 
