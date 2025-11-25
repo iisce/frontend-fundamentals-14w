@@ -1,0 +1,103 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	width: 800px;
+	height: 800px;
+	background-color: cyan;
+	padding: 50px;
+}
+
+.relative {
+	position: relative;
+}
+
+.box {
+	width: 700px;
+	height: 700px;
+	background-color: green;
+	padding: 50px;
+}
+
+.parent {
+	/* Creates positioning context */
+	width: 600px;
+	height: 600px;
+	background-color: rgb(8, 114, 114);
+	padding: 50px;
+}
+
+.child {
+	/* Creates positioning context */
+	width: 50px;
+	height: 50px;
+	background-color: rgb(3, 48, 48);
+	display: inline-block;
+}
+.child-2 {
+	/* Creates positioning context */
+	width: 50px;
+	height: 50px;
+	background-color: rgb(182, 154, 13);
+	display: inline-block;
+}
+.child-1 {
+	/* Creates positioning context */
+	width: 50px;
+	height: 50px;
+	background-color: rgb(255, 36, 83);
+	display: inline-block;
+}
+
+.absolute-box {
+	position: absolute;
+	left: 50%;
+	bottom: 50%;
+	translate: -50%;
+}
+
+.fixed-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	color: white;
+	padding: 20px;
+	/* z-index: 1000; */
+}
+
+.section-header {
+	position: sticky;
+	top: 0;
+	background-color: #f0f0f0;
+	padding: 10px;
+	font-weight: bold;
+	border: 2px solid #333;
+}
+
+.section-content {
+	height: 400px;
+	padding: 20px;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+.modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 30px;
+	border-radius: 8px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
