@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Sticky Navigation</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: Arial, sans-serif;
+				line-height: 1.6;
+			}
+
+			/* TODO: Style the header */
+			.header {
+				position: sticky;
+				top: 0;
+				background: #2c3e50;
+				color: white;
+				padding: 1rem 2rem;
+			}
+
+			.content h2 {
+				position: sticky;
+				top: 80px; /* Adjust based on header height */
+				padding: 1rem 0;
+				margin-bottom: 1rem;
+				color: #2c3e50;
+				z-index: 1;
+				background-color: aquamarine;
+			}
+
+			.header nav {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.header ul {
+				list-style: none;
+				display: flex;
+				gap: 2rem;
+			}
+
+			.header a {
+				color: white;
+				text-decoration: none;
+			}
+
+			.content {
+				padding: 2rem;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+
+			.content section {
+				margin-bottom: 3rem;
+				min-height: 90vh;
+			}
+
+			.content h2 {
+				margin-bottom: 1rem;
+				color: #2c3e50;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="header">
+			<nav>
+				<h1>My Website</h1>
+				<ul>
+					<li><a href="#home">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#services">Services</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main class="content">
+			<section id="home">
+				<h2>Home</h2>
+				<p>
+					Welcome to our website. Scroll down to see the sticky
+					navigation in action.
+				</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Nullam euismod, nisl eget ultricies aliquam, nunc nisl
+					aliquet nunc, quis aliquam nisl nunc quis nisl.
+				</p>
+			</section>
+
+			<section id="about">
+				<h2>About Us</h2>
+				<p>Learn more about our company and mission.</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Nullam euismod, nisl eget ultricies aliquam, nunc nisl
+					aliquet nunc, quis aliquam nisl nunc quis nisl.
+				</p>
+			</section>
+
+			<section id="services">
+				<h2>Our Services</h2>
+				<p>Discover the services we offer to our clients.</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Nullam euismod, nisl eget ultricies aliquam, nunc nisl
+					aliquet nunc, quis aliquam nisl nunc quis nisl.
+				</p>
+			</section>
+
+			<section id="contact">
+				<h2>Contact</h2>
+				<p>Get in touch with us today.</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Nullam euismod, nisl eget ultricies aliquam, nunc nisl
+					aliquet nunc, quis aliquam nisl nunc quis nisl.
+				</p>
+			</section>
+		</main>
+	</body>
+</html>

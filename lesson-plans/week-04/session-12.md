@@ -115,6 +115,30 @@ article {
 
 **Result:** Image floats left, text flows around the right side.
 
+**Visual representation:**
+
+```
+Before float (normal flow):
+┌─────────────────────────────┐
+│ ┌───────────────────────┐   │
+│ │       Image           │   │
+│ └───────────────────────┘   │
+│                             │
+│ Text starts here and        │
+│ continues below the image.  │
+└─────────────────────────────┘
+
+After float: left:
+┌─────────────────────────────┐
+│ ┌─────────┐ Text wraps      │
+│ │ Image   │ around the      │
+│ │ (float) │ floated image   │
+│ └─────────┘ and continues   │
+│             on multiple     │
+│             lines naturally.│
+└─────────────────────────────┘
+```
+
 ### Float for Column Layouts
 
 **Creating two columns:**
@@ -198,6 +222,104 @@ The parent container **collapses to zero height** (or height of any non-floated 
 **Solution:** Use clearing techniques (covered in Part 2).
 
 </details>
+
+### Real-World Use Cases for Floats
+
+**1. Article Images (Original Purpose)**
+
+```css
+/* Magazine-style article layout */
+.article-content img.pull-left {
+	float: left;
+	max-width: 40%;
+	margin: 0 20px 15px 0;
+}
+
+.article-content img.pull-right {
+	float: right;
+	max-width: 40%;
+	margin: 0 0 15px 20px;
+}
+```
+
+**Use when:** Adding images to blog posts, articles, or editorial content.
+
+**2. Navigation Menus**
+
+```css
+/* Horizontal navigation with logo */
+.header-nav .logo {
+	float: left;
+}
+
+.header-nav .menu {
+	float: right;
+}
+
+.header-nav::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+```
+
+**Use when:** Creating horizontal layouts where items need to be on opposite sides.
+
+**3. Legacy Browser Support**
+
+```css
+/* Fallback for older browsers that don't support Flexbox */
+.column {
+	float: left;
+	width: 50%;
+}
+
+/* Modern browsers override with Flexbox */
+@supports (display: flex) {
+	.container {
+		display: flex;
+	}
+	.column {
+		float: none;
+		flex: 1;
+	}
+}
+```
+
+**Use when:** Supporting IE9 or maintaining legacy projects.
+
+### Browser DevTools Tips for Debugging Floats
+
+**Tip 1: Visualize the float**
+
+1. Open DevTools (F12)
+2. Select the floated element
+3. Look for the computed dimensions
+4. Check if parent has height: 0
+
+**Tip 2: Check for clearfix**
+
+```javascript
+// Run in console to check if clearfix is applied
+getComputedStyle(
+	document.querySelector('.container'),
+	'::after'
+).getPropertyValue('clear');
+// Should return 'both' if clearfix is present
+```
+
+**Tip 3: Highlight layout issues**
+
+```css
+/* Temporary debugging CSS */
+.container {
+	outline: 2px solid red; /* Shows container boundary */
+}
+
+.floated {
+	outline: 2px solid blue; /* Shows floated element */
+}
+```
 
 ---
 
@@ -392,6 +514,48 @@ When all children are floated, the parent container collapses:
 | `overflow`              | Simple, one line       | Potential side effects      | Simple containers, no overflow needed |
 
 **Recommended:** Use **clearfix** for float-based layouts.
+
+### Troubleshooting Flowchart
+
+```
+Float Layout Issue?
+        │
+        ▼
+Is parent collapsed?
+   ├─ YES ─▶ Add clearfix to parent
+   │         OR use overflow: auto
+   │
+   └─ NO ──▶ Is footer overlapping?
+              ├─ YES ─▶ Add clear: both to footer
+              │
+              └─ NO ──▶ Are widths exceeding 100%?
+                         ├─ YES ─▶ Use box-sizing: border-box
+                         │         AND reduce total width
+                         │
+                         └─ NO ──▶ Check DevTools for
+                                   computed dimensions
+```
+
+### Performance Considerations
+
+**Floats vs Modern Alternatives:**
+
+| Aspect                   | Floats                     | Flexbox           | CSS Grid                 |
+| ------------------------ | -------------------------- | ----------------- | ------------------------ |
+| **Render Performance**   | ⚡ Fast                    | ⚡ Fast           | ⚡ Fast                  |
+| **Layout Recalculation** | ⚠️ Can trigger reflows     | ✅ Optimized      | ✅ Optimized             |
+| **Browser Support**      | ✅ Universal (IE6+)        | ✅ Modern (IE11+) | ⚠️ Modern (IE11 partial) |
+| **Code Complexity**      | ⚠️ Requires clearfix hacks | ✅ Simple         | ✅ Simple                |
+| **Maintenance**          | ❌ Difficult               | ✅ Easy           | ✅ Easy                  |
+
+**When floats might still be preferable:**
+
+-   Supporting very old browsers (IE8, IE9)
+-   Text wrapping around images (original use case)
+-   Very simple left/right layouts
+-   Legacy codebases
+
+**Recommendation:** Use Flexbox or Grid for new projects.
 
 <details>
 <summary>💡 Knowledge Check #2</summary>
@@ -710,6 +874,175 @@ The `::after` pseudo-element:
 -   Margin: 1% × 2 sides = 2%
 -   Total per card: 23% + 2% = 25%
 -   4 cards: 25% × 4 = 100%
+
+### Advanced Float Techniques
+
+**Technique 1: Negative Margins for Gutterless Grids**
+
+```css
+/* Container with negative margin */
+.row {
+	margin-left: -10px;
+	margin-right: -10px;
+}
+
+.row::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+/* Columns with positive padding */
+.col {
+	float: left;
+	width: 33.333%;
+	padding-left: 10px;
+	padding-right: 10px;
+	box-sizing: border-box;
+}
+```
+
+**Why this works:**
+
+-   Negative margins pull the row outward
+-   Column padding creates the gutter
+-   First and last columns align with container edges
+
+**Technique 2: Centering Floated Elements**
+
+```css
+/* Float wrapper that centers itself */
+.centered-float {
+	float: left;
+	position: relative;
+	left: 50%;
+}
+
+.centered-float-inner {
+	float: left;
+	position: relative;
+	left: -50%;
+}
+```
+
+```html
+<div class="centered-float">
+	<div class="centered-float-inner">
+		<nav>
+			<a href="#">Link 1</a>
+			<a href="#">Link 2</a>
+			<a href="#">Link 3</a>
+		</nav>
+	</div>
+</div>
+```
+
+**Technique 3: Equal Height Columns with Faux Columns**
+
+```css
+/* Parent with background image */
+.columns-wrapper {
+	background: url('column-bg.png') repeat-y;
+	background-size: 50% 100%; /* Two columns */
+}
+
+.column {
+	float: left;
+	width: 50%;
+	padding-bottom: 9999px; /* Fake height */
+	margin-bottom: -9999px; /* Negative margin */
+}
+
+.columns-wrapper {
+	overflow: hidden; /* Clip the padding */
+}
+```
+
+**Note:** This is a hack. Use Flexbox (`display: flex`) for real equal-height columns.
+
+### Responsive Float Layouts
+
+**Mobile-First Approach:**
+
+```css
+/* Mobile: Stacked (no floats) */
+.column {
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 15px;
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) {
+	.column {
+		float: left;
+		width: 48%;
+		margin-right: 4%;
+	}
+
+	.column:nth-child(2n) {
+		margin-right: 0; /* Remove margin from every 2nd item */
+	}
+}
+
+/* Desktop: 4 columns */
+@media (min-width: 1024px) {
+	.column {
+		width: 23%;
+		margin-right: 2.666%;
+	}
+
+	.column:nth-child(2n) {
+		margin-right: 2.666%; /* Restore margin */
+	}
+
+	.column:nth-child(4n) {
+		margin-right: 0; /* Remove margin from every 4th item */
+	}
+}
+```
+
+**Desktop-First Approach:**
+
+```css
+/* Desktop: 4 columns (default) */
+.column {
+	float: left;
+	width: 23%;
+	margin-right: 2.666%;
+	box-sizing: border-box;
+}
+
+.column:nth-child(4n) {
+	margin-right: 0;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 1023px) {
+	.column {
+		width: 48%;
+		margin-right: 4%;
+	}
+
+	.column:nth-child(4n) {
+		margin-right: 4%; /* Reset */
+	}
+
+	.column:nth-child(2n) {
+		margin-right: 0;
+	}
+}
+
+/* Mobile: Stacked */
+@media (max-width: 767px) {
+	.column {
+		float: none;
+		width: 100%;
+		margin-right: 0;
+		margin-bottom: 20px;
+	}
+}
+```
 
 <details>
 <summary>💡 Knowledge Check #3</summary>
@@ -1602,6 +1935,100 @@ The `::after` pseudo-element:
 
 **Preview:** We'll learn Flexbox in detail next week (Session 13-14)!
 
+### CSS Grid Quick Preview
+
+**Same layout with CSS Grid:**
+
+```css
+/* Float version (old - complex) */
+.container-float {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.sidebar-float {
+	float: left;
+	width: 25%;
+	box-sizing: border-box;
+}
+
+.main-float {
+	float: right;
+	width: 72%;
+	box-sizing: border-box;
+}
+
+.container-float::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+/* Grid version (modern - simple) */
+.container-grid {
+	display: grid;
+	grid-template-columns: 1fr 3fr; /* 1:3 ratio */
+	gap: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+/* No need for width, float, or clearfix! */
+```
+
+**Benefits:**
+
+-   Two-dimensional layouts (rows AND columns)
+-   No clearfix needed
+-   Gap property for spacing
+-   Easier responsive design
+-   Better alignment control
+
+**Preview:** We'll learn CSS Grid in Week 06!
+
+### Browser Compatibility Notes
+
+**Float Property Support:**
+
+| Browser | Version | Support |
+| ------- | ------- | ------- |
+| Chrome  | All     | ✅ Full |
+| Firefox | All     | ✅ Full |
+| Safari  | All     | ✅ Full |
+| Edge    | All     | ✅ Full |
+| IE      | 6+      | ✅ Full |
+
+**CSS Multi-Column Support:**
+
+| Property       | Chrome | Firefox | Safari | Edge | IE  |
+| -------------- | ------ | ------- | ------ | ---- | --- |
+| `column-count` | 50+    | 52+     | 9+     | 12+  | 10+ |
+| `column-gap`   | 50+    | 52+     | 9+     | 12+  | 10+ |
+| `column-rule`  | 50+    | 52+     | 9+     | 12+  | 10+ |
+| `column-span`  | 50+    | 71+     | 9+     | 12+  | 10+ |
+| `break-inside` | 50+    | 65+     | 10+    | 12+  | 10+ |
+
+**Vendor Prefixes (for older browsers):**
+
+```css
+/* Include prefixes for broader support */
+.newspaper {
+	-webkit-column-count: 3; /* Chrome, Safari */
+	-moz-column-count: 3; /* Firefox */
+	column-count: 3; /* Standard */
+
+	-webkit-column-gap: 40px;
+	-moz-column-gap: 40px;
+	column-gap: 40px;
+
+	-webkit-column-rule: 1px solid #ccc;
+	-moz-column-rule: 1px solid #ccc;
+	column-rule: 1px solid #ccc;
+}
+```
+
+**Modern approach (2025):** Vendor prefixes are rarely needed for floats and basic columns.
+
 ---
 
 ## 🏡 Homework Assignment
@@ -1645,6 +2072,26 @@ Build a magazine-style article page that combines float layouts and CSS columns.
 
 **Submission:** Create a folder `session-12-homework` with your files.
 
+**Evaluation Criteria:**
+
+| Criteria              | Points | Description                       |
+| --------------------- | ------ | --------------------------------- |
+| **HTML Structure**    | 15     | Semantic elements, proper nesting |
+| **Float Layouts**     | 25     | Correct use of floats for columns |
+| **Clearfix Applied**  | 15     | No parent collapse issues         |
+| **CSS Columns**       | 20     | Proper newspaper-style article    |
+| **Responsive Design** | 10     | Works on mobile and desktop       |
+| **Code Quality**      | 10     | Clean, commented, organized       |
+| **Design/Polish**     | 5      | Professional appearance           |
+| **Total**             | 100    |                                   |
+| **Bonus**             | +15    | Sticky header, animations, etc.   |
+
+**Timeline:**
+
+-   Start: End of Session 12
+-   Due: Before Session 13 (Week 05)
+-   Time needed: 2-3 hours
+
 ---
 
 ## 📚 Additional Resources
@@ -1667,6 +2114,24 @@ Build a magazine-style article page that combines float layouts and CSS columns.
 
 -   [The Evolution of CSS Layouts](https://www.youtube.com/watch?v=qOUtkN6M52M)
 -   [From Floats to Flexbox to Grid](https://chenhuijing.com/blog/from-floats-to-flexbox-to-grid/)
+
+### Tools & Generators
+
+-   [CSS Layout Generator](https://csslayout.io/) — Common layout patterns
+-   [Gridulator](http://gridulator.com/) — Calculate grid percentages
+-   [Float Layout Calculator](https://www.responsivegridsystem.com/) — Responsive grid generator
+
+### Practice Exercises
+
+-   [CSS Diner](https://flukeout.github.io/) — CSS selector game
+-   [Flexbox Froggy](https://flexboxfroggy.com/) — Learn Flexbox (next week preview)
+-   [Grid Garden](https://cssgridgarden.com/) — Learn CSS Grid (Week 06 preview)
+
+### Video Tutorials
+
+-   [CSS Floats Explained](https://www.youtube.com/watch?v=xara4Z1b18I) — Visual explanation
+-   [The Clearfix Explained](https://www.youtube.com/watch?v=2tC4PIlEz_o) — Deep dive
+-   [CSS Multi-Column Layout](https://www.youtube.com/watch?v=qOUtkN6M52M) — Practical examples
 
 ---
 
