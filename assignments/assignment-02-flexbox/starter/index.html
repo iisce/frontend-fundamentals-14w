@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Assignment 02 — Flexbox</title>
+		<link
+			rel="stylesheet"
+			href="./styles.css"
+		/>
+	</head>
+
+	<body>
+		<a
+			class="skip-link"
+			href="#main"
+			>Skip to main content</a
+		>
+
+		<header class="site-header">
+			<a
+				class="brand"
+				href="#"
+				>Flexbox Lab</a
+			>
+
+			<nav aria-label="Primary">
+				<ul class="nav">
+					<li>
+						<a
+							href="#"
+							aria-current="page"
+							>Dashboard</a
+						>
+					</li>
+					<li><a href="#toolbar">Toolbar</a></li>
+					<li><a href="#cards">Cards</a></li>
+					<li><a href="#layout">Layout</a></li>
+				</ul>
+			</nav>
+
+			<button
+				class="profile"
+				type="button"
+			>
+				Profile
+			</button>
+		</header>
+
+		<main id="main">
+			<section class="intro">
+				<h1>Flexbox Dashboard</h1>
+				<p>
+					Style this page using Flexbox: wrapping, spacing, alignment,
+					and sizing.
+				</p>
+			</section>
+
+			<section
+				id="toolbar"
+				class="toolbar"
+				aria-label="Toolbar"
+			>
+				<h2 class="sr-only">Toolbar</h2>
+
+				<form
+					class="toolbar-form"
+					action="#"
+					method="get"
+				>
+					<label class="field">
+						<span>Search</span>
+						<input
+							type="search"
+							name="q"
+							placeholder="Search items…"
+						/>
+					</label>
+
+					<label class="field">
+						<span>Status</span>
+						<select name="status">
+							<option value="all">All</option>
+							<option value="active">Active</option>
+							<option value="archived">Archived</option>
+						</select>
+					</label>
+
+					<button
+						class="primary"
+						type="submit"
+					>
+						Add item
+					</button>
+				</form>
+			</section>
+
+			<section
+				id="cards"
+				class="cards"
+				aria-label="Cards"
+			>
+				<header class="section-header">
+					<h2>Cards</h2>
+					<p class="muted">
+						Use flex-wrap + gap and keep actions aligned.
+					</p>
+				</header>
+
+				<div class="card-row">
+					<article class="card">
+						<h3>Starter kit</h3>
+						<p>Everything you need to begin.</p>
+						<div class="card-actions">
+							<a
+								class="link"
+								href="#"
+								>Details</a
+							>
+							<button type="button">Pin</button>
+						</div>
+					</article>
+
+					<article class="card">
+						<h3>Active plan</h3>
+						<p>
+							This card has a longer description to test
+							equal-height behavior and spacing.
+						</p>
+						<div class="card-actions">
+							<a
+								class="link"
+								href="#"
+								>Details</a
+							>
+							<button type="button">Pin</button>
+						</div>
+					</article>
+
+					<article class="card">
+						<h3>Archived note</h3>
+						<p>Less important content.</p>
+						<div class="card-actions">
+							<a
+								class="link"
+								href="#"
+								>Details</a
+							>
+							<button type="button">Pin</button>
+						</div>
+					</article>
+
+					<article class="card">
+						<h3>Team space</h3>
+						<p>Shared docs and tasks.</p>
+						<div class="card-actions">
+							<a
+								class="link"
+								href="#"
+								>Details</a
+							>
+							<button type="button">Pin</button>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section
+				id="layout"
+				class="layout"
+				aria-label="Sidebar layout"
+			>
+				<aside class="sidebar">
+					<h2>Filters</h2>
+					<ul class="filter-list">
+						<li><a href="#">All items</a></li>
+						<li><a href="#">Pinned</a></li>
+						<li><a href="#">Recently updated</a></li>
+						<li><a href="#">Archived</a></li>
+					</ul>
+				</aside>
+
+				<section
+					class="content"
+					aria-label="Main content"
+				>
+					<h2>Results</h2>
+
+					<div class="result">
+						<h3>Result A</h3>
+						<p class="muted">
+							Try aligning buttons using flex patterns.
+						</p>
+						<div class="result-actions">
+							<button type="button">View</button>
+							<button type="button">Edit</button>
+							<button
+								type="button"
+								class="danger"
+							>
+								Delete
+							</button>
+						</div>
+					</div>
+
+					<div class="result">
+						<h3>Result B</h3>
+						<p class="muted">Try pushing one action to the end.</p>
+						<div class="result-actions">
+							<button type="button">View</button>
+							<button type="button">Edit</button>
+							<button
+								type="button"
+								class="danger"
+							>
+								Delete
+							</button>
+						</div>
+					</div>
+				</section>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<p>© 2026 Flexbox Lab</p>
+			<nav aria-label="Footer">
+				<a href="#">Privacy</a>
+				<a href="#">Terms</a>
+			</nav>
+		</footer>
+	</body>
+</html>

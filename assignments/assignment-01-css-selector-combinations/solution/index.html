@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Assignment 01 — Selector Combinations (Solution)</title>
+		<link
+			rel="stylesheet"
+			href="./styles.css"
+		/>
+	</head>
+
+	<body>
+		<a
+			class="skip-link"
+			href="#main"
+			>Skip to main content</a
+		>
+
+		<header class="site-header">
+			<a
+				class="brand"
+				href="#"
+				>Acme UI</a
+			>
+
+			<nav aria-label="Primary">
+				<ul class="nav">
+					<li>
+						<a
+							href="#"
+							aria-current="page"
+							>Dashboard</a
+						>
+					</li>
+					<li><a href="#panels">Panels</a></li>
+					<li><a href="#cards">Cards</a></li>
+					<li><a href="#settings">Settings</a></li>
+				</ul>
+			</nav>
+
+			<a
+				class="header-cta"
+				href="#settings"
+				>Get updates</a
+			>
+		</header>
+
+		<main id="main">
+			<section class="intro">
+				<h1>CSS Selector Combinations</h1>
+				<p>
+					This solution styles the page primarily using combinators,
+					attribute selectors, and pseudo-classes.
+				</p>
+			</section>
+
+			<section
+				id="panels"
+				class="panels"
+				aria-label="Panels"
+			>
+				<h2>Panels</h2>
+
+				<section
+					class="panel"
+					data-variant="info"
+				>
+					<h3>Info</h3>
+					<p>Read this first.</p>
+					<p class="muted">Extra details for context.</p>
+					<a href="#">Learn more</a>
+				</section>
+
+				<section
+					class="panel"
+					data-variant="warning"
+				>
+					<h3>Warning</h3>
+					<p>Pay attention to this message.</p>
+					<p class="muted">A small detail you should not miss.</p>
+					<a href="#">Resolve</a>
+				</section>
+
+				<section
+					class="panel"
+					data-variant="success"
+				>
+					<h3>Success</h3>
+					<p>Everything worked correctly.</p>
+					<p class="muted">You can continue safely.</p>
+					<a href="#">Share</a>
+				</section>
+			</section>
+
+			<section
+				id="cards"
+				class="cards"
+				aria-label="Cards"
+			>
+				<header class="section-header">
+					<h2>Cards</h2>
+					<p class="hint">
+						Cards include a data-state you can style.
+					</p>
+				</header>
+
+				<article
+					class="card"
+					data-state="new"
+				>
+					<h3>Welcome kit</h3>
+					<p>New users see this first.</p>
+					<a href="#">Details</a>
+				</article>
+
+				<article
+					class="card"
+					data-state="active"
+				>
+					<h3>Active project</h3>
+					<p>This is currently in progress.</p>
+					<a href="#">Details</a>
+				</article>
+
+				<article
+					class="card"
+					data-state="archived"
+				>
+					<h3>Archived notes</h3>
+					<p>Old items live here.</p>
+					<a href="#">Details</a>
+				</article>
+
+				<article
+					class="card"
+					data-state="active"
+				>
+					<h3>Team space</h3>
+					<p>Shared docs and tasks.</p>
+					<a href="#">Details</a>
+				</article>
+			</section>
+
+			<section
+				id="settings"
+				class="settings"
+				aria-label="Settings"
+			>
+				<h2>Settings</h2>
+
+				<form
+					class="settings-form"
+					action="#"
+					method="get"
+				>
+					<fieldset>
+						<legend>Notification preferences</legend>
+
+						<label>
+							Email (required)
+							<input
+								type="email"
+								name="email"
+								required
+								placeholder="you@example.com"
+								autocomplete="email"
+							/>
+						</label>
+
+						<label>
+							Role
+							<select name="role">
+								<option value="student">Student</option>
+								<option value="teacher">Teacher</option>
+							</select>
+						</label>
+
+						<div
+							class="choices"
+							aria-label="Frequency"
+						>
+							<p class="choices-title">Email frequency</p>
+
+							<label>
+								<input
+									type="radio"
+									name="freq"
+									value="daily"
+									checked
+								/>
+								Daily
+							</label>
+							<label>
+								<input
+									type="radio"
+									name="freq"
+									value="weekly"
+								/>
+								Weekly
+							</label>
+						</div>
+
+						<label class="checkbox">
+							<input
+								type="checkbox"
+								name="product"
+								checked
+							/>
+							Product updates
+						</label>
+
+						<button type="submit">Save settings</button>
+						<p class="hint">Tip: use :required and :checked.</p>
+					</fieldset>
+				</form>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<p>© 2026 Acme UI</p>
+			<nav aria-label="Footer">
+				<a href="#">Privacy</a>
+				<a href="#">Terms</a>
+			</nav>
+		</footer>
+	</body>
+</html>

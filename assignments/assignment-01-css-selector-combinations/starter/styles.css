@@ -1,0 +1,135 @@
+/*
+  Assignment 01 — CSS Selector Combinations
+  Starter CSS
+
+  Rules:
+  - Try to solve tasks mostly with selector combinations (combinators, attributes, pseudo-classes).
+  - Avoid adding lots of new classes.
+  - Do not use !important.
+
+  Tip: Use browser DevTools to test selectors.
+*/
+
+/* TODO: Base styles
+  - font stack
+  - spacing
+  - colors
+  - line-height
+*/
+
+:root {
+	/* Feel free to change these */
+	--bg: #ffffff;
+	--fg: #111827;
+	--muted: #6b7280;
+	--border: #e5e7eb;
+	--focus: #1d4ed8;
+}
+
+body {
+	margin: 0;
+	font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+	color: var(--fg);
+	background: var(--bg);
+	line-height: 1.5;
+}
+
+/* TODO: Make skip link visible on focus only */
+.skip-link {
+	position: absolute;
+	left: -999px;
+	top: 0;
+}
+
+/* Layout helpers (keep) */
+.site-header,
+main,
+.site-footer {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+/* TODO: Header layout + nav styling using selector combinations */
+.site-header {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.nav {
+	list-style: none;
+	display: flex;
+	gap: 0.75rem;
+	padding: 0;
+	margin: 0;
+}
+
+/* TODO: Style only header nav links, not brand link */
+.site-header a {
+	color: inherit;
+}
+
+/* TODO: Focus styles for links/buttons/inputs using :focus-visible */
+
+/* Panels */
+.panels {
+	margin-top: 2rem;
+}
+
+.panels > h2 {
+	margin-bottom: 0.75rem;
+}
+
+/* TODO: .panel base styles + [data-variant] accents + combinators */
+.panel {
+	border: 1px solid var(--border);
+	border-radius: 0.75rem;
+	padding: 1rem;
+	margin: 0.75rem 0;
+}
+
+/* Cards */
+.cards {
+	margin-top: 2rem;
+}
+
+/* TODO: Turn cards into a responsive grid using the container */
+
+.card {
+	border: 1px solid var(--border);
+	border-radius: 0.75rem;
+	padding: 1rem;
+}
+
+/* TODO: Style card states using [data-state="..."] */
+
+/* Settings form */
+.settings {
+	margin-top: 2rem;
+}
+
+.settings-form fieldset {
+	border: 1px solid var(--border);
+	border-radius: 0.75rem;
+	padding: 1rem;
+}
+
+.settings-form label {
+	display: grid;
+	gap: 0.35rem;
+	margin: 0.75rem 0;
+}
+
+/* TODO: Style only inputs/selects inside .settings */
+
+/* Footer */
+.site-footer {
+	margin-top: 2rem;
+	border-top: 1px solid var(--border);
+}
+
+.site-footer nav {
+	display: flex;
+	gap: 0.75rem;
+}

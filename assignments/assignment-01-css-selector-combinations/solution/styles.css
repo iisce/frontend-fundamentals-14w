@@ -1,0 +1,398 @@
+/* Solution — Assignment 01: CSS Selector Combinations */
+
+:root {
+	color-scheme: light;
+
+	--bg: #ffffff;
+	--surface: #f8fafc;
+	--fg: #0f172a;
+	--muted: #475569;
+	--border: #e2e8f0;
+
+	--info: #2563eb;
+	--warning: #b45309;
+	--success: #16a34a;
+
+	--focus: #1d4ed8;
+
+	--radius: 0.85rem;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+	line-height: 1.55;
+	color: var(--fg);
+	background: radial-gradient(1200px 600px at 20% -10%, #dbeafe, transparent),
+		radial-gradient(900px 500px at 80% 0%, #dcfce7, transparent), var(--bg);
+}
+
+:where(a, button, input, select) {
+	font: inherit;
+}
+
+/* Skip link: visible only when focused */
+.skip-link {
+	position: absolute;
+	left: 1rem;
+	top: 1rem;
+	padding: 0.5rem 0.75rem;
+	background: var(--fg);
+	color: white;
+	border-radius: 0.5rem;
+	transform: translateY(-200%);
+}
+
+.skip-link:focus {
+	transform: translateY(0);
+}
+
+/* Page layout */
+.site-header,
+main,
+.site-footer {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+.site-header {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	gap: 1rem;
+	align-items: center;
+	border-bottom: 1px solid var(--border);
+	padding-top: 1.25rem;
+	padding-bottom: 1.25rem;
+}
+
+.brand {
+	font-weight: 800;
+	letter-spacing: 0.02em;
+	text-decoration: none;
+	color: var(--fg);
+}
+
+.nav {
+	list-style: none;
+	display: flex;
+	gap: 0.5rem;
+	padding: 0;
+	margin: 0;
+	flex-wrap: wrap;
+}
+
+/* Style only header nav links (not brand / not header-cta) */
+.site-header nav a {
+	display: inline-block;
+	padding: 0.45rem 0.65rem;
+	border-radius: 0.65rem;
+	text-decoration: none;
+	color: var(--fg);
+}
+
+.site-header nav a:hover {
+	background: rgba(15, 23, 42, 0.06);
+}
+
+.site-header nav a[aria-current='page'] {
+	background: rgba(37, 99, 235, 0.12);
+	color: #1e40af;
+	text-decoration: underline;
+	text-underline-offset: 0.22em;
+}
+
+.header-cta {
+	display: inline-block;
+	background: var(--fg);
+	color: white;
+	padding: 0.55rem 0.8rem;
+	border-radius: 0.8rem;
+	text-decoration: none;
+}
+
+.header-cta:hover {
+	background: #111827;
+}
+
+/* Focus styles */
+:where(a, button, input, select):focus-visible {
+	outline: 3px solid var(--focus);
+	outline-offset: 3px;
+}
+
+main {
+	padding-top: 1.5rem;
+}
+
+.intro {
+	background: rgba(255, 255, 255, 0.75);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	padding: 1rem 1.1rem;
+}
+
+.intro h1 {
+	margin: 0 0 0.35rem;
+}
+
+.intro p {
+	margin: 0;
+	color: var(--muted);
+}
+
+/* Panels */
+.panels {
+	margin-top: 2rem;
+}
+
+.panels > h2 {
+	margin: 0 0 0.75rem;
+}
+
+.panel {
+	background: rgba(255, 255, 255, 0.85);
+	border: 1px solid var(--border);
+	border-left: 6px solid var(--border);
+	border-radius: var(--radius);
+	padding: 1rem;
+}
+
+.panel + .panel {
+	margin-top: 0.75rem;
+}
+
+/* Attribute selectors for variants */
+.panel[data-variant='info'] {
+	border-left-color: var(--info);
+}
+
+.panel[data-variant='warning'] {
+	border-left-color: var(--warning);
+}
+
+.panel[data-variant='success'] {
+	border-left-color: var(--success);
+}
+
+.panel h3 {
+	margin: 0;
+}
+
+/* Adjacent sibling: first paragraph after heading */
+.panel h3 + p {
+	font-style: italic;
+}
+
+.panel p {
+	margin: 0.5rem 0;
+}
+
+.panel p.muted {
+	color: var(--muted);
+	font-size: 0.95rem;
+}
+
+.panel a {
+	display: inline-block;
+	margin-top: 0.25rem;
+	text-decoration: none;
+	font-weight: 650;
+	color: var(--fg);
+	border-bottom: 1px solid rgba(15, 23, 42, 0.25);
+}
+
+.panel a:hover {
+	border-bottom-color: rgba(15, 23, 42, 0.6);
+}
+
+/* Cards */
+.cards {
+	margin-top: 2.25rem;
+	display: grid;
+	gap: 0.85rem;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.section-header {
+	grid-column: 1 / -1;
+	display: grid;
+	gap: 0.25rem;
+	margin-bottom: 0.25rem;
+}
+
+.section-header > h2 {
+	margin: 0;
+}
+
+.section-header > .hint {
+	margin: 0;
+	color: var(--muted);
+}
+
+.card {
+	background: rgba(255, 255, 255, 0.85);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	padding: 1rem;
+}
+
+/* State styling via attributes */
+.card[data-state='new'] {
+	border-color: rgba(22, 163, 74, 0.35);
+	box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
+}
+
+.card[data-state='active'] {
+	border-color: rgba(37, 99, 235, 0.35);
+}
+
+.card[data-state='archived'] {
+	opacity: 0.72;
+}
+
+.card h3 {
+	margin: 0 0 0.35rem;
+}
+
+.card p {
+	margin: 0 0 0.75rem;
+	color: var(--muted);
+}
+
+.card a {
+	display: inline-block;
+	padding: 0.5rem 0.7rem;
+	border-radius: 0.75rem;
+	background: rgba(15, 23, 42, 0.06);
+	color: var(--fg);
+	text-decoration: none;
+}
+
+.card a:hover {
+	background: rgba(15, 23, 42, 0.12);
+}
+
+/* Settings */
+.settings {
+	margin-top: 2.25rem;
+}
+
+.settings-form fieldset {
+	background: rgba(255, 255, 255, 0.85);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	padding: 1rem;
+}
+
+.settings-form legend {
+	font-weight: 750;
+	padding: 0 0.25rem;
+}
+
+.settings-form label {
+	display: grid;
+	gap: 0.35rem;
+	margin: 0.75rem 0;
+}
+
+/* Style only inputs/selects inside settings */
+.settings :is(input[type='email'], select) {
+	padding: 0.55rem 0.65rem;
+	border-radius: 0.65rem;
+	border: 1px solid var(--border);
+	background: var(--surface);
+}
+
+.settings :is(input[type='email'], select):focus-visible {
+	border-color: rgba(29, 78, 216, 0.5);
+}
+
+.settings :is(input[type='email'], select):required {
+	border-left: 4px solid rgba(29, 78, 216, 0.55);
+}
+
+.choices {
+	border: 1px dashed rgba(15, 23, 42, 0.2);
+	border-radius: 0.75rem;
+	padding: 0.75rem;
+}
+
+.choices-title {
+	margin: 0 0 0.5rem;
+	font-weight: 650;
+}
+
+/* :checked to show selected frequency */
+.choices input:checked {
+	accent-color: var(--focus);
+}
+
+.checkbox {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+button[type='submit'] {
+	margin-top: 0.5rem;
+	padding: 0.6rem 0.85rem;
+	border-radius: 0.85rem;
+	border: 1px solid rgba(15, 23, 42, 0.2);
+	background: var(--fg);
+	color: white;
+	cursor: pointer;
+}
+
+button[type='submit']:hover {
+	background: #111827;
+}
+
+.settings .hint {
+	margin: 0.75rem 0 0;
+	color: var(--muted);
+}
+
+/* Footer */
+.site-footer {
+	margin-top: 2.5rem;
+	border-top: 1px solid var(--border);
+	padding-top: 1.25rem;
+	padding-bottom: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.site-footer p {
+	margin: 0;
+	color: var(--muted);
+}
+
+.site-footer nav {
+	display: flex;
+	gap: 0.75rem;
+}
+
+.site-footer nav > a {
+	color: var(--muted);
+	text-decoration: none;
+}
+
+.site-footer nav > a:hover {
+	color: var(--fg);
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		scroll-behavior: auto !important;
+		transition: none !important;
+	}
+}
