@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Flexbox Deep Dive</title>
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			.garri-container {
+				display: flex;
+				align-items: center; /* All items align to top */
+				height: 200px;
+				background: lightgray;
+				gap: 10px;
+				padding: 10px;
+			}
+
+			.garrium {
+				background: coral;
+				padding: 20px;
+			}
+
+			.special {
+				align-self: flex-start; /* This one centers vertically */
+				background: skyblue;
+			}
+
+			.container {
+				display: flex;
+				gap: 10px;
+				background: lightgray;
+				padding: 10px;
+			}
+
+			.item {
+				background: coral;
+				padding: 20px;
+			}
+
+			.item-1 {
+				flex-basis: 100px;
+			}
+			.item-2 {
+				flex-basis: 200px;
+			}
+			.item-3 {
+				flex-basis: 150px;
+			}
+
+			.shrink-container {
+				display: flex;
+				gap: 10px;
+				max-width: 700px; /* Smaller container */
+				background: lightgray;
+				padding: 10px;
+			}
+
+			.box {
+				background: lightcoral;
+				padding: 20px;
+				flex-basis: 150px; /* All want to be 150px */
+			}
+
+			.box-1 {
+				flex-shrink: 0;
+			} /* Won't shrink */
+			.box-2 {
+				flex-shrink: 1;
+			} /* Normal shrinking */
+			.box-3 {
+				flex-shrink: 2;
+			} /* Shrinks twice as much */
+			.box-4 {
+				flex-shrink: 3;
+			} /* Shrinks three times as much */
+
+			.grow-container {
+				display: flex;
+				gap: 10px;
+				width: 600px;
+				background: lightgray;
+				padding: 10px;
+			}
+
+			.garri {
+				background: skyblue;
+				padding: 20px;
+				flex-basis: 100px; /* All start at 100px */
+			}
+
+			.garri-1 {
+				flex-grow: 0;
+			} /* Stays 100px */
+			.garri-2 {
+				flex-grow: 1;
+			} /* Gets 1 share of extra space */
+			.garri-3 {
+				flex-grow: 2;
+			} /* Gets 2 shares of extra space */
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="item item-1">Item 1</div>
+			<div class="item item-2">Item 2</div>
+			<div class="item item-3">Item 3</div>
+		</div>
+		<br />
+		<div class="shrink-container">
+			<div class="box box-1">No Shrink</div>
+			<div class="box box-2">Shrink 1</div>
+			<div class="box box-3">Shrink 2</div>
+			<div class="box box-4">Shrink 3</div>
+		</div>
+		<br />
+		<div class="grow-container">
+			<div class="garri garri-1">Grow 0</div>
+			<div class="garri garri-2">Grow 1</div>
+			<div class="garri garri-3">Grow 2</div>
+		</div>
+		<br />
+		<div class="garri-container">
+			<div class="garrium">Normal</div>
+			<div class="garrium special">Centered</div>
+			<div class="garrium">Normal</div>
+		</div>
+	</body>
+</html>
