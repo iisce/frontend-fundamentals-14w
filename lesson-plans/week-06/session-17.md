@@ -28,7 +28,7 @@ By the end of this session, you will be able to:
 
 ## 🔑 Key Terms
 
-**CSS Grid**, **Grid Container**, **Grid Items**, **Grid Lines**, **Grid Tracks**, **Grid Cells**, **Grid Areas**, **fr unit**, **Explicit Grid**, **Implicit Grid**
+**CSS Grid**, **Grid Container**, **Grid Items**, **Grid Lines**, **Grid Tracks**, **Grid Cells**, **Grid Areas**, **fr unit**, **Explicit Grid**, **Implicit Grid**, **Grid Gap**, **Alignment**, **auto-fill**, **auto-fit**
 
 ---
 
@@ -94,9 +94,58 @@ Useful functions for defining large grids:
 }
 ```
 
+#### `auto-fill` vs `auto-fit`
+
+These keywords are used with `repeat()` to create responsive layouts without media queries.
+
+-   **`auto-fill`**: Fills the row with as many columns as it can fit. Even if the columns are empty, they will take up space.
+-   **`auto-fit`**: Also fills the row with columns, but then **collapses** any empty columns, stretching the remaining items to fill the entire row.
+
 ---
 
-## Part 3: Grid Template Areas (25 minutes)
+## Part 3: Spacing and Alignment (20 minutes)
+
+### Gaps (Spacing)
+
+The `gap` property (shorthand for `row-gap` and `column-gap`) is the modern way to add space between grid items.
+
+```css
+.container {
+    display: grid;
+    gap: 20px; /* 20px between all rows and columns */
+    /* OR */
+    row-gap: 30px;
+    column-gap: 10px;
+}
+```
+
+Unlike margins, `gap` only adds space **between** items, not around the edges of the container.
+
+### Alignment
+
+Grid items can be aligned both horizontally and vertically.
+
+#### Aligning Items (Within their cells)
+-   `justify-items`: Aligns items along the **inline (horizontal)** axis. (start, end, center, stretch)
+-   `align-items`: Aligns items along the **block (vertical)** axis. (start, end, center, stretch)
+
+```css
+.container {
+    justify-items: center;
+    align-items: center;
+}
+```
+
+> [!TIP]
+> **Super Centering:** To perfectly center an item inside its grid cell (or the whole grid if it's the only item), use the shorthand:
+> `place-items: center;`
+
+#### Aligning Tracks (Within the container)
+If your grid tracks are smaller than the container, you can align the tracks themselves using `justify-content` and `align-content`.
+
+---
+
+## Part 4: Grid Template Areas (20 minutes)
 
 One of the most intuitive ways to use Grid is by naming areas and "drawing" the layout.
 
@@ -154,6 +203,32 @@ You can also position items using the grid lines.
 
 ---
 
+## Part 6: Explicit vs. Implicit Grid (10 minutes)
+
+-   **Explicit Grid:** The tracks you define manually using `grid-template-columns` and `grid-template-rows`.
+-   **Implicit Grid:** Tracks created automatically by the browser when there are more items than defined cells.
+
+You can control the sizing of these automatic tracks:
+
+```css
+.container {
+    grid-auto-rows: 100px; /* Any automatically created row will be 100px tall */
+    grid-auto-flow: row; /* Default: item fills rows. Can be 'column' */
+}
+```
+
+---
+
+## Part 7: Grid DevTools (5 minutes)
+
+Modern browsers (Chrome, Firefox, Edge) have excellent Grid inspectors.
+1.  Open **Developer Tools (F12)**.
+2.  In the **Elements** panel, find your grid container.
+3.  Click the small **"grid" badge** next to the element.
+4.  This will overlay the grid lines, area names, and gaps directly on your website.
+
+---
+
 ## 🎨 Hands-On Exercise: Simple Website Layout
 
 **Goal:** Create a 2-column layout with a header and footer using `grid-template-areas`.
@@ -176,19 +251,43 @@ You can also position items using the grid lines.
 ```css
 .page-layout {
     display: grid;
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: 100px 1fr 80px;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "nav nav"
         "aside content"
         "foot foot";
+    gap: 15px;
     min-height: 100vh;
 }
 
-header { grid-area: nav; background: #34495e; color: white; }
-aside { grid-area: aside; background: #ecf0f1; }
-main { grid-area: content; background: #fff; padding: 20px; }
-footer { grid-area: foot; background: #2c3e50; color: white; }
+header {
+    grid-area: nav;
+    background: #34495e;
+    color: white;
+    display: grid;
+    place-items: center; /* Center header text */
+}
+
+aside {
+    grid-area: aside;
+    background: #ecf0f1;
+    padding: 20px;
+}
+
+main {
+    grid-area: content;
+    background: #fff;
+    padding: 30px;
+}
+
+footer {
+    grid-area: foot;
+    background: #2c3e50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
 ```
 </details>
 
