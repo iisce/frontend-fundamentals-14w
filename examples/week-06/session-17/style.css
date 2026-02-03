@@ -1,0 +1,95 @@
+/* Apply box-sizing to all elements and remove default margin and padding */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* Define a grid container with specific areas for header, sidebar, content, and footer */
+.container {
+	display: grid;
+	grid-template-columns: 200px 1fr 200px; /* Sidebar takes 200px, content takes the remaining space */
+	grid-template-rows: auto 1fr auto; /* Header and footer have auto height, content fills the rest */
+	grid-template-areas:
+		'header header header' /* Header spans across two columns */
+		'sidebar content ads' /* Sidebar and content are side by side */
+		'footer footer footer'; /* Footer spans across two columns */
+	height: 100vh; /* Full viewport height */
+}
+
+/* Assign grid areas to respective elements */
+.header {
+	grid-area: header;
+}
+.sidebar {
+	grid-area: sidebar;
+}
+.content {
+	grid-area: content;
+}
+.footer {
+	grid-area: footer;
+}
+
+.ads {
+	grid-area: ads;
+}
+
+/* Define a flex container with alignment to the bottom-right */
+.flex-container {
+	display: flex;
+	justify-content: flex-end; /* Align items to the right horizontally */
+	align-items: flex-end; /* Align items to the bottom vertically */
+}
+
+/* Background color utility classes */
+.bg-red {
+	background-color: red; /* Red background */
+}
+
+.bg-orange {
+	background-color: orange; /* Orange background */
+}
+
+.bg-yellow {
+	background-color: yellow; /* Yellow background */
+}
+
+/* Shades of gray background utility classes */
+.bg-gray-100 {
+	background-color: #f7fafc; /* Light gray background */
+}
+.bg-gray-300 {
+	background-color: #e2e8f0; /* Medium gray background */
+}
+.bg-gray-500 {
+	background-color: #a0aec0; /* Dark gray background */
+}
+
+/* Border utility class */
+.border {
+	border: 1px solid black; /* Black border with 1px thickness */
+}
+
+/* Background color utility class for blue */
+.bg-blue {
+	background-color: blue; /* Blue background */
+}
+
+/* Height utility classes */
+.h-40 {
+	height: 160px; /* Height of 160px */
+}
+
+.h-20 {
+	height: 80px; /* Height of 80px */
+}
+
+.h-80 {
+	height: 320px; /* Height of 320px */
+}
+
+/* Width utility class (commented out) */
+.w-full {
+	width: 100%; /* Full width */
+}
