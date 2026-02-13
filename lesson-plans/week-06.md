@@ -28,6 +28,22 @@ This week focuses on responsive design principles, CSS Grid layout system, and c
 -   Summary: When to use Flexbox vs Grid, combining both for complex layouts, building complete page layouts, and real-world patterns.
 -   Link: [week-06/session-18.md](week-06/session-18.md)
 
+## Bonus Materials: Tailwind CSS Utilities
+
+A subset of Tailwind-like utility classes for rapid prototyping and understanding utility-first CSS:
+
+| File | Description |
+|------|-------------|
+| [tailwind-utilities.css](week-06/tailwind-utilities.css) | Ready-to-use utility class stylesheet |
+| [tailwind-cheat-sheet.md](week-06/tailwind-cheat-sheet.md) | Quick reference guide for all utilities |
+
+**Usage:** Link the CSS in your HTML to use utility classes:
+```html
+<link rel="stylesheet" href="tailwind-utilities.css">
+```
+
+---
+
 ## Deliverables This Week
 
 -   Complete responsive design and Grid labs
